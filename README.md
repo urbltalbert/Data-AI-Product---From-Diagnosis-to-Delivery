@@ -1,31 +1,29 @@
-# [Team name] — [your agent in five words]
+# Team 7 — Review insights for hotels
 
-**Course:** Data & AI Product: From Diagnosis to Delivery (MSA-DAT07-04) · Albert School · shared project with Agentic Workflows
-**Cohort:** M2-INTER-1 / M2-INTER-2 (keep one)
+**Course:** Data & AI Product: From Diagnosis to Delivery (MSA-DAT07-04) · Albert School
+**Cohort:** M2-INTER-1
 
 ## Team
 | Name | Git handle | Also in the Agentic Workflows team? |
 |---|---|---|
-| | | yes |
-| | | yes |
-| | | yes |
-| | | yes |
+| Ugo Reboullet | `urbltalbert` | no |
+| Enzo Méret | `emeret-as` | no |
 
 ## Our agent
-- **Starting point:** P_ — [proposal name] · or **bring your own** (see `00_pitch.md`)
-- **The company:** [type of B2B SaaS, number of customers, tickets per month, support team size]
-- **The job, in one sentence:** When [trigger], the agent [does], producing [outcome].
-- **Trust level per step:** [e.g. L3 on documentation questions, L1 (human only) on anything with an amount]
-- **One thing it must never do:** [your first guardrail]
+- **Starting point:** P8 — Voice-of-customer synthesis — hospitality-tech SaaS
+- **The company:** LobbyIQ (fictional), reviews platform for 3,000 hotels, ~6,000 tickets per month, 30 account managers
+- **The job, in one sentence:** When a hotel asks why its rating dropped, the agent analyses that hotel's reviews, producing a one-page draft (top three issues, change vs last quarter) for the account manager.
+- **Trust level per step:** L3 detect the request · L4 compute rating trends · L2 draft (the account manager approves every draft) · L1 send (the account manager only)
+- **One thing it must never do:** send anything to a hotel itself.
 
 ## Repository structure
 One numbered file per session. Every member authors commits in at least four of the numbered files.
 
 | File | Session | Status |
 |---|---|---|
-| `00_pitch.md` | before S3 — only if you bring your own idea | |
-| `01_problem_statement.md` | S1–S2 — Assignment 1 | |
-| `governance.md` | created for Assignment 1, one line added every session | |
+| `00_pitch.md` | before S3 — only if you bring your own idea | not needed (P8) |
+| `01_problem_statement.md` | S1–S2 — Assignment 1 | done |
+| `governance.md` | created for Assignment 1, one line added every session | S1 done |
 | `02_sizing.xlsx` | S2 — Assignment 2 | |
 | `02_investment_memo.md` | S2 — Assignment 2 | |
 | `03_product_brief.md` | S3 | |
