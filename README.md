@@ -23,9 +23,9 @@ One numbered file per session. Every member authors commits in at least four of 
 |---|---|---|
 | `00_pitch.md` | before S3 — only if you bring your own idea | not needed (P8) |
 | `01_problem_statement.md` | S1–S2 — Assignment 1 | done |
-| `governance.md` | created for Assignment 1, one line added every session | S1 done |
-| `02_sizing.xlsx` | S2 — Assignment 2 | |
-| `02_investment_memo.md` | S2 — Assignment 2 | |
+| `governance.md` | created for Assignment 1, one line added every session | S1–S2 done |
+| `02_sizing.xlsx` | S2 — Assignment 2 | done |
+| `02_investment_memo.md` | S2 — Assignment 2 | done |
 | `03_product_brief.md` | S3 | |
 | `04_architecture.md` | S4 | |
 | `05_metrics.md` | S5 | |

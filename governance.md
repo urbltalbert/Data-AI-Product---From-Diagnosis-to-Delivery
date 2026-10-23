@@ -14,8 +14,8 @@
 | 6 | **The people it cannot serve:** what happens to them? | Hotels with too few reviews: the account manager answers as today. | Threshold to set in S4 |
 
 ## Session 2 — the cost of error
-- Which cost-of-error line is a **legal or reputational** risk, not just money? …
-- Who in the company **owns** that risk? …
+- Which cost-of-error line is a **legal or reputational** risk, not just money? The cost of a wrong answer (`02_sizing.xlsx`, Inputs row 30). Reputational: a wrong top issue reaches a hotel, which fixes the wrong thing and stops trusting LobbyIQ. Legal: a summary quotes a guest's name or personal details (GDPR).
+- Who in the company **owns** that risk? The Head of Customer Success (wrong top issue); the DPO (personal data in a summary). To check: does the DPO accept this owner split?
 
 ## Session 3 — data (to come)
 ## Session 4 — human-in-the-loop points and the override switch (to come)
