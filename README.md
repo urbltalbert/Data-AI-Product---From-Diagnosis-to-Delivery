@@ -13,7 +13,7 @@
 - **Starting point:** P8 — Voice-of-customer synthesis — hospitality-tech SaaS
 - **The company:** LobbyIQ (fictional), reviews platform for 3,000 hotels, ~6,000 tickets per month, 30 account managers
 - **The job, in one sentence:** When a hotel asks why its rating dropped, the agent analyses that hotel's reviews, producing a one-page draft (top three issues, change vs last quarter) for the account manager.
-- **Trust level per step:** L3 detect the request · L4 compute rating trends · L2 draft (the account manager approves every draft) · L1 send (the account manager only)
+- **Trust level per step:** L3 detect the request · L4 compute rating trends · L2 draft (the account manager approves every draft) · send: person only (the account manager)
 - **One thing it must never do:** send anything to a hotel itself.
 
 ## Repository structure
@@ -23,16 +23,16 @@ One numbered file per session. Every member authors commits in at least four of 
 |---|---|---|
 | `00_pitch.md` | before S3 — only if you bring your own idea | not needed (P8) |
 | `01_problem_statement.md` | S1–S2 — Assignment 1 | done |
-| `governance.md` | created for Assignment 1, one line added every session | S1–S2 done |
+| `governance.md` | created for Assignment 1, one line added every session | S1–S3 done |
 | `02_sizing.xlsx` | S2 — Assignment 2 | done |
 | `02_investment_memo.md` | S2 — Assignment 2 | done |
-| `03_product_brief.md` | S3 | |
+| `03_product_brief.md`, `03_ai_lean_canvas.md`, `03_user_research.md`, `03_prototype_link.md` | S3 — Assignment 3 | done (brief v2) |
 | `04_architecture.md` | S4 | |
 | `05_metrics.md` | S5 | |
 | `06_ab_protocol.md` | S6 | |
 | `07_operations.md` | S7 | |
 | `08_launch_memo.md` | S8 | |
-| `spec.md`, `product_brief.md` | final | |
+| `spec.md`, `product_brief.md` | skeleton in S3, final at the end | skeleton v0 |
 | `/prototype`, `/evals` | from S4 | |
 
 ## Rules

@@ -1,0 +1,266 @@
+<title>Review Insights Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: support-desk shell — ticket list | hotel's message | Review Insights sidebar. */
+:root {
+  --bg: #F3F6F6; --surface: #FFFFFF; --sunk: #E8EEEE; --line: #D3DCDC;
+  --fg: #142424; --muted: #5A6E6E; --accent: #0E7470; --accent-fg: #FFFFFF; --accent-soft: #DDEFEE;
+  --bad: #B3362B; --bad-soft: #F8E3E0; --warn: #8A5A00; --warn-soft: #FBEFD6; --good: #2F7A3E;
+  --f-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F1717; --surface: #162121; --sunk: #1D2A2A; --line: #2C3D3D;
+  --fg: #E3ECEC; --muted: #93A8A8; --accent: #4FC2BC; --accent-fg: #0B1515; --accent-soft: #173837;
+  --bad: #F08A7E; --bad-soft: #3A2220; --warn: #E8B656; --warn-soft: #382C14; --good: #7CCB8B; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0F1717; --surface: #162121; --sunk: #1D2A2A; --line: #2C3D3D;
+  --fg: #E3ECEC; --muted: #93A8A8; --accent: #4FC2BC; --accent-fg: #0B1515; --accent-soft: #173837;
+  --bad: #F08A7E; --bad-soft: #3A2220; --warn: #E8B656; --warn-soft: #382C14; --good: #7CCB8B; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 14px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 32px }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0 }
+button { font: inherit; cursor: pointer }
+button:focus-visible, [tabindex]:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.mono { font-family: var(--f-mono); font-size: 12px }
+.label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600 }
+
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin: 0 auto 14px; max-width: 1280px }
+.brand { display: flex; align-items: baseline; gap: 10px }
+.brand h1 { font-size: 18px; font-weight: 800 }
+.brand span { color: var(--muted) }
+.proto-tag { font-size: 12px; color: var(--warn); background: var(--warn-soft); padding: 3px 10px; border-radius: 999px }
+
+.shell { display: grid; grid-template-columns: 230px minmax(0, 1fr) minmax(0, 1.25fr); gap: 14px; max-width: 1280px; margin: 0 auto; align-items: start }
+@media (max-width: 1000px) { .shell { grid-template-columns: minmax(0, 1fr) } }
+
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; min-width: 0 }
+.pane-head { padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap }
+.pane-head h2 { font-size: 14px; font-weight: 700 }
+
+.tickets { list-style: none; margin: 0; padding: 6px }
+.ticket-btn { width: 100%; text-align: left; background: none; border: 1px solid transparent; border-radius: 8px; padding: 10px; display: grid; gap: 2px; color: var(--fg) }
+.ticket-btn:hover { background: var(--sunk) }
+.ticket-btn[aria-current="true"] { background: var(--accent-soft); border-color: var(--accent) }
+.ticket-btn strong { font-weight: 600 }
+.ticket-btn small { color: var(--muted) }
+
+.msg { padding: 16px; display: grid; gap: 12px }
+.msg-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--muted) }
+.bubble { background: var(--sunk); border-radius: 10px; padding: 14px 16px; max-width: 60ch }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px }
+.fact { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px }
+.fact b { display: block; font-family: var(--f-display); font-size: 18px; font-variant-numeric: tabular-nums }
+
+.side { display: grid }
+.side-body { padding: 16px; display: grid; gap: 16px }
+.timer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums }
+.ai-chip { font-size: 11px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 999px }
+
+.quarters { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; background: var(--sunk); border-radius: 8px; padding: 10px 12px }
+.quarters div { display: grid }
+.quarters .q { font-family: var(--f-display); font-weight: 700; font-size: 15px }
+.quarters .arrow { color: var(--muted) }
+.quarters .now { text-align: right }
+
+.themes { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px }
+.theme { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px }
+.theme-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap }
+.theme-head h3 { font-size: 15px; font-weight: 700 }
+.rank { color: var(--muted); font-family: var(--f-mono); font-size: 12px; margin-right: 6px }
+.counts { font-variant-numeric: tabular-nums; display: flex; gap: 8px; align-items: baseline }
+.delta { color: var(--bad); background: var(--bad-soft); font-weight: 600; font-size: 12px; padding: 1px 8px; border-radius: 999px }
+.bar { height: 6px; background: var(--sunk); border-radius: 3px; overflow: hidden; position: relative }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--bad); border-radius: 3px }
+.bar s { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--muted); text-decoration: none }
+.quote { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 2px 0 2px 10px; color: var(--fg) }
+.quote:hover { border-left-color: var(--accent) }
+.quote em { font-style: normal }
+.quote .src { display: block; color: var(--accent); font-size: 12px; margin-top: 2px }
+
+.draft textarea { width: 100%; min-height: 210px; resize: vertical; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: var(--surface); color: var(--fg); font: inherit; line-height: 1.55 }
+.draft textarea[readonly] { background: var(--sunk) }
+.guard { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--good) }
+
+.actions { display: flex; flex-wrap: wrap; gap: 8px }
+.btn { border-radius: 8px; padding: 9px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font-weight: 600 }
+.btn:hover { border-color: var(--accent) }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg) }
+.btn.ghost { border-color: transparent; color: var(--muted) }
+
+.banner { border-radius: 8px; padding: 14px; background: var(--warn-soft); color: var(--fg); display: grid; gap: 6px }
+.banner strong { color: var(--warn) }
+.confirm { border: 1px solid var(--accent); border-radius: 8px; padding: 12px; display: grid; gap: 10px; background: var(--accent-soft) }
+.status { border-radius: 8px; padding: 12px; background: var(--accent-soft); color: var(--fg) }
+
+.overlay { position: fixed; inset: 0; background: rgb(0 0 0 / .45); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 20 }
+.modal { background: var(--surface); color: var(--fg); border-radius: 12px; max-width: 520px; width: 100%; padding: 20px; display: grid; gap: 10px; border: 1px solid var(--line) }
+.modal p { margin: 0 }
+.stars { color: var(--bad); font-variant-numeric: tabular-nums }
+mark { background: var(--bad-soft); color: var(--fg); padding: 0 2px; border-radius: 2px }
+@media (prefers-reduced-motion: no-preference) { .theme, .banner { animation: in .25s ease-out both } @keyframes in { from { opacity: .4; transform: translateY(3px) } } }
+</style>
+
+<header class="topbar">
+  <div class="brand"><h1>LobbyIQ Support</h1><span>Account manager · Claire</span></div>
+  <span class="proto-tag">Prototype v0.2 · fictional data</span>
+</header>
+
+<main class="shell">
+  <nav class="pane" aria-label="Tickets">
+    <div class="pane-head"><h2>Open tickets</h2><span class="mono">3</span></div>
+    <ul class="tickets" id="ticketList"></ul>
+  </nav>
+
+  <section class="pane" aria-labelledby="msgTitle">
+    <div class="pane-head"><h2 id="msgTitle">Hotel message</h2><span class="mono" id="msgId"></span></div>
+    <div class="msg" id="msg"></div>
+  </section>
+
+  <aside class="pane side" aria-labelledby="sideTitle">
+    <div class="pane-head">
+      <h2 id="sideTitle">Review Insights <span class="ai-chip">AI draft · you approve</span></h2>
+      <span class="timer" id="timer" title="Time since you opened this ticket">00:00</span>
+    </div>
+    <div class="side-body" id="side"></div>
+  </aside>
+</main>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="revTitle">
+    <div class="label" id="revTitle">Full review</div>
+    <div id="revBody"></div>
+    <div class="actions"><button class="btn" id="closeRev">Close</button></div>
+  </div>
+</div>
+
+<script>
+const TICKETS = [
+  { id: "T-48213", hotel: "Hôtel Le Cèdre", hid: "H-0417", type: "3-star · urban · 64 rooms", received: "Today, 09:12",
+    text: "Hello, our rating went from 8.4 to 8.0 this quarter and the owners want to know why before the next meeting. Can you tell us what guests are complaining about?",
+    reviews: { prev: 238, now: 251 }, score: { prev: "8.4", now: "8.0" },
+    status: "draft",
+    themes: [
+      { name: "Breakfast queue", prev: 9, now: 34, quotes: [
+        { id: "R-88412", text: "Waited 25 minutes for a table at breakfast, twice.", full: "Room was fine but the breakfast was a mess. <mark>Waited 25 minutes for a table at breakfast, twice.</mark> Staff were clearly overwhelmed.", stars: "2/5", date: "14 Aug 2026" },
+        { id: "R-89077", text: "Breakfast room far too small for a full hotel.", full: "Good location near the station. <mark>Breakfast room far too small for a full hotel.</mark> We gave up on the second day.", stars: "3/5", date: "2 Sep 2026" } ] },
+      { name: "Room temperature", prev: 6, now: 21, quotes: [
+        { id: "R-88730", text: "The air conditioning did nothing, room was 27 °C at night.", full: "<mark>The air conditioning did nothing, room was 27 °C at night.</mark> Reception said a technician would come, nobody did.", stars: "2/5", date: "21 Aug 2026" },
+        { id: "R-89301", text: "Too hot to sleep with the window closed, too noisy with it open.", full: "Nice decor. <mark>Too hot to sleep with the window closed, too noisy with it open.</mark>", stars: "3/5", date: "9 Sep 2026" } ] },
+      { name: "Slow check-in", prev: 7, now: 15, quotes: [
+        { id: "R-88954", text: "Only one person at reception, 20 minutes to get our keys.", full: "Arrived at 15:00. <mark>Only one person at reception, 20 minutes to get our keys.</mark> The rest of the stay was OK.", stars: "3/5", date: "28 Aug 2026" },
+        { id: "R-89512", text: "Check-in queue out the door on a Friday evening.", full: "<mark>Check-in queue out the door on a Friday evening.</mark> Room clean, bed comfortable.", stars: "3/5", date: "18 Sep 2026" } ] }
+    ] },
+  { id: "T-48231", hotel: "Auberge du Pont", hid: "H-1092", type: "2-star · rural · 18 rooms", received: "Today, 10:40",
+    text: "Why did our rating drop? We had a couple of bad reviews recently.",
+    reviews: { prev: 22, now: 31 }, score: { prev: "8.1", now: "7.7" },
+    status: "fallback", reason: "Only 31 reviews this quarter (minimum 50). Too few to find reliable themes." },
+  { id: "T-48240", hotel: "Hôtel des Arcades", hid: "H-0733", type: "3-star · urban · 80 rooms", received: "Today, 11:05",
+    text: "Bonjour, pourquoi notre note a-t-elle baissé ce trimestre ?",
+    reviews: { prev: 190, now: 204 }, score: { prev: "8.2", now: "7.9" },
+    status: "fallback", reason: "Ticket is not in English. Non-English requests are answered by an account manager." }
+];
+const Q = { prev: "Q2 2026 · Apr–Jun", now: "Q3 2026 · Jul–Sep" };
+
+let current = 0, start = Date.now(), stopped = false, state = {};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function draftText(t) {
+  const lines = t.themes.map((th, i) => `${i + 1}. ${th.name}: ${th.now} negative mentions in Q3, up from ${th.prev} in Q2.`).join("\n");
+  return `Hello,\n\nThank you for your question. We compared your guest reviews for Q3 2026 (Jul–Sep, ${t.reviews.now} reviews) with Q2 2026 (Apr–Jun, ${t.reviews.prev} reviews).\n\nThe three issues that grew the most:\n${lines}\n\nYou will find two guest quotes for each issue below, with a link to the full review.\n\nBest regards,\nClaire — LobbyIQ`;
+}
+
+function renderList() {
+  $("ticketList").innerHTML = TICKETS.map((t, i) => `
+    <li><button class="ticket-btn" data-i="${i}" aria-current="${i === current}">
+      <strong>${esc(t.hotel)}</strong><small>${esc(t.text.slice(0, 48))}…</small><small class="mono">${t.id} · ${esc(t.received)}</small>
+    </button></li>`).join("");
+  document.querySelectorAll(".ticket-btn").forEach(b => b.onclick = () => openTicket(+b.dataset.i));
+}
+
+function renderMsg(t) {
+  $("msgId").textContent = t.id;
+  $("msg").innerHTML = `
+    <div class="msg-meta"><strong>${esc(t.hotel)}</strong><span class="mono">${t.hid}</span><span>${esc(t.type)}</span><span>${esc(t.received)}</span></div>
+    <div class="bubble">${esc(t.text)}</div>
+    <div class="facts">
+      <div class="fact"><span class="label">Rating</span><b>${t.score.prev} → ${t.score.now}</b></div>
+      <div class="fact"><span class="label">Reviews Q2</span><b>${t.reviews.prev}</b></div>
+      <div class="fact"><span class="label">Reviews Q3</span><b>${t.reviews.now}</b></div>
+    </div>`;
+}
+
+function renderSide(t) {
+  const s = state[t.id] || (state[t.id] = { mode: "review", text: t.status === "draft" ? draftText(t) : "" });
+  if (t.status === "fallback") {
+    $("side").innerHTML = `
+      <div class="banner" role="status"><strong>No draft for this ticket</strong><span>${esc(t.reason)}</span><span class="label">Routed to you · answer as usual</span></div>
+      <div class="actions"><button class="btn primary" id="mine">Write it myself</button></div>
+      <div id="extra"></div>`;
+    $("mine").onclick = () => { $("extra").innerHTML = `<div class="draft"><textarea id="own" aria-label="Your reply" placeholder="Write your reply to ${esc(t.hotel)}…"></textarea></div>`; $("own").focus(); };
+    return;
+  }
+  if (s.mode === "sent") {
+    $("side").innerHTML = `<div class="status" role="status"><strong>Sent by Claire</strong> to ${esc(t.hotel)} after ${s.took}. Logged with source review IDs, prompt and model version.</div>`;
+    return;
+  }
+  const max = Math.max(...t.themes.map(x => x.now));
+  $("side").innerHTML = `
+    <div class="quarters" aria-label="Quarters compared">
+      <div><span class="label">Compared with</span><span class="q">${Q.prev}</span><span class="mono">${t.reviews.prev} reviews</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="now"><span class="label">This quarter</span><span class="q">${Q.now}</span><span class="mono">${t.reviews.now} reviews</span></div>
+    </div>
+    <div>
+      <div class="label">Top 3 negative themes · counted on negative mentions only</div>
+      <ol class="themes">${t.themes.map((th, i) => `
+        <li class="theme">
+          <div class="theme-head"><h3><span class="rank">${i + 1}</span>${esc(th.name)}</h3>
+            <span class="counts"><span class="mono">${th.prev} → ${th.now}</span><span class="delta">+${th.now - th.prev}</span></span></div>
+          <div class="bar" aria-hidden="true"><i style="width:${th.now / max * 100}%"></i><s style="left:${th.prev / max * 100}%"></s></div>
+          ${th.quotes.map((q, k) => `<button class="quote" data-t="${i}" data-q="${k}"><em>“${esc(q.text)}”</em><span class="src">Open full review ${q.id} ↗</span></button>`).join("")}
+        </li>`).join("")}
+      </ol>
+    </div>
+    <div class="draft">
+      <div class="label" style="margin-bottom:6px">Draft email</div>
+      <textarea id="draft" aria-label="Draft email" ${s.mode === "edit" || s.mode === "mine" ? "" : "readonly"}>${esc(s.text)}</textarea>
+    </div>
+    <div class="guard"><span>✓ No guest or staff names</span><span>✓ Only ${t.hid} data</span><span>✓ Not sent until you approve</span></div>
+    <div id="confirmBox"></div>
+    <div class="actions" id="actions">
+      <button class="btn primary" id="approve">Approve and send</button>
+      <button class="btn" id="edit">${s.mode === "edit" ? "Editing…" : "Edit"}</button>
+      <button class="btn ghost" id="mine">Write it myself</button>
+    </div>`;
+  document.querySelectorAll(".quote").forEach(b => b.onclick = () => showReview(t.themes[b.dataset.t].quotes[b.dataset.q], t));
+  $("draft").oninput = e => s.text = e.target.value;
+  $("edit").onclick = () => { s.mode = "edit"; renderSide(t); $("draft").focus(); };
+  $("mine").onclick = () => { s.mode = "mine"; s.text = ""; renderSide(t); $("draft").placeholder = "Write your reply…"; $("draft").focus(); };
+  $("approve").onclick = () => {
+    $("confirmBox").innerHTML = `<div class="confirm"><span>Send this email to <strong>${esc(t.hotel)}</strong> now?</span>
+      <div class="actions"><button class="btn primary" id="yes">Send</button><button class="btn" id="no">Cancel</button></div></div>`;
+    $("yes").onclick = () => { s.mode = "sent"; s.took = $("timer").textContent.replace(":", " min ") + " s"; stopped = true; renderSide(t); };
+    $("no").onclick = () => $("confirmBox").innerHTML = "";
+  };
+}
+
+function showReview(q, t) {
+  $("revBody").innerHTML = `<p class="mono">${q.id} · ${esc(t.hotel)} · ${esc(q.date)} · <span class="stars">${q.stars}</span></p><p>${q.full}</p><p class="label">Guest name hidden</p>`;
+  $("overlay").hidden = false; $("closeRev").focus();
+}
+$("closeRev").onclick = () => $("overlay").hidden = true;
+$("overlay").onclick = e => { if (e.target === $("overlay")) $("overlay").hidden = true; };
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("overlay").hidden = true; });
+
+function openTicket(i) { current = i; start = Date.now(); stopped = state[TICKETS[i].id]?.mode === "sent"; $("timer").textContent = "00:00"; renderList(); renderMsg(TICKETS[i]); renderSide(TICKETS[i]); }
+setInterval(() => { if (stopped) return; const s = Math.floor((Date.now() - start) / 1000); $("timer").textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); }, 1000);
+openTicket(0);
+</script>
