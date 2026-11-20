@@ -6,8 +6,8 @@
 ## Team
 | Name | Git handle | Also in the Agentic Workflows team? |
 |---|---|---|
-| Ugo Reboullet | `urbltalbert` | no |
-| Enzo Méret | `emeret-as` | no |
+| Ugo Reboullet | `urbltalbert` | yes |
+| Enzo Méret | `emeret-as` | yes |
 
 ## Our agent
 - **Starting point:** P8 — Voice-of-customer synthesis — hospitality-tech SaaS
