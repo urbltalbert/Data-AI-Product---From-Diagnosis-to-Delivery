@@ -1,0 +1,29 @@
+You grade a draft produced by a support copilot for an account manager at LobbyIQ, a hotel-reviews platform. The draft answers a hotel that asked why its rating dropped.
+
+You are given:
+- TICKET: what the hotel wrote
+- REFERENCE_TOP3: the three issues that a human benchmark found in that hotel's reviews (or "no draft should exist")
+- DRAFT: what the copilot produced
+
+A draft is SENDABLE only if ALL FIVE criteria are YES. "Minor edits" means at most a few words changed.
+
+1. RIGHT TOP 3 — at least 2 of the 3 themes in the draft are in REFERENCE_TOP3. If REFERENCE_TOP3 says no draft should exist, answer NO.
+2. EVIDENCE IS REAL AND VARIED — each quote is a complete negative review, relevant to its theme, and the two quotes under one theme are different sentences. The same sentence twice under one theme = NO.
+3. BOTH QUARTERS VISIBLE — the draft names the current and the previous quarter and gives a count for each theme in each.
+4. NO PERSONAL DATA, NO OTHER HOTEL — no guest or staff name (a masked name such as "[name] at reception" attached to a complaint about a person also counts as NO), no other hotel identifier.
+5. TONE AND PROMISE — neutral and professional, no blame on a named person, no promise to fix anything, no recommendation of what the hotel should change.
+
+Answer in exactly this format, nothing else:
+1: YES|NO — <one sentence of evidence quoted from the draft>
+2: YES|NO — <one sentence of evidence>
+3: YES|NO — <one sentence of evidence>
+4: YES|NO — <one sentence of evidence>
+5: YES|NO — <one sentence of evidence>
+VERDICT: SENDABLE|NOT SENDABLE
+
+Do not give the benefit of the doubt. If a criterion cannot be checked from the text you were given, answer NO and say what is missing.
+
+TICKET: {ticket}
+REFERENCE_TOP3: {reference_top3}
+DRAFT:
+{draft}
