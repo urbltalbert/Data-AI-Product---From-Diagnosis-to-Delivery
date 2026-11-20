@@ -10,6 +10,7 @@
 | `golden_30.csv` / `golden_30.md` | **the golden set**: 30 prototype drafts, frozen, graded by both humans and by the judge |
 | `judge_prompt.txt` | the judge prompt, written from the guideline below |
 | `agreement.py` | computes both agreement rates from the filled files |
+| `grade.py` | grading helper: one draft at a time, the five criteria as y/n, per grader; `--merge` fills `golden_30.csv` after both are done. It never shows the other grader's answers. |
 
 Strata of `eval_set_v1.csv` (from the Session 3 audit): in scope 63 / hand-over 37; hand-over reasons: < 50 reviews, reviews not in English, ticket not in English, several hotels, not a rating-drop request; hotel stars (2–4) and type (urban, leisure, business, small, chain). **Gap to state:** the stars-and-type mix is ours, not LobbyIQ's; the only language beyond English in the tickets are French, German, Italian and Spanish.
 
@@ -28,7 +29,7 @@ A draft is **SENDABLE** only if all five criteria are YES. "Minor edits" = at mo
 **Escalate rows:** there is no draft, so there is nothing to grade. They are scored by the script (right decision, right reason), not by humans.
 
 ## How agreement is measured
-1. Ugo and Enzo grade `evals/golden_30.csv` **independently**, each in their own column (`grader_1…`, `grader_2…`), yes/no, one-line comment if NO. No discussion before both are done.
+1. Ugo and Enzo grade `evals/golden_30.csv` **independently**, each in their own column (`grader_1…`, `grader_2…`), yes/no, one-line comment if NO. No discussion before both are done. Helper: `python evals/grade.py --grader 1` (Ugo) / `--grader 2` (Enzo), then `python evals/grade.py --merge`.
 2. The judge grades the same 30 with `judge_prompt.txt` (one case at a time, pasted into a chat; or through any API). Its verdicts go into `evals/judge_30.csv` (`id`, `judge_sendable_yes_no`, `judge_evidence`).
 3. `python evals/agreement.py` prints: human–human agreement (and Cohen's kappa), human–judge agreement against the consensus of the two humans, and the list of disagreements.
 4. The team reads every disagreement, fixes **either the guideline or the prompt, once**, and writes below: the two rates before, what changed, and the date.
