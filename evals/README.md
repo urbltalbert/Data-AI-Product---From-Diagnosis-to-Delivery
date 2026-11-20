@@ -4,6 +4,7 @@
 | File | What it is |
 |---|---|
 | `eval_set_v0.csv` | 50 cases (C01–C50). Development data since 20 Nov: they were looked at to fix the detector. |
+| `eval_set_v3.csv` | 200 cases = v2 + **50 fresh cases C151–C200**, written before the spec v4 changes and run once after them (`report_v0.md` §9). Tagged `fresh in v3`. |
 | `eval_set_v2.csv` | 150 cases = v1 + **50 fresh cases C101–C150**, written before the C07 / C100 fix and run once after it (`report_v0.md` §8). Same format, tagged `fresh in v2`. |
 | `eval_set_v1.csv` | 100 cases = the same 50 + **50 fresh cases C51–C100**, written before the run. Synthetic inputs, tagged in the `origin` column. Labels = what the generator plants (`data/cases_spec.py`), written by a person before any run. |
 | `report_v0.md` | the numbers: §1 first run, §6 after fixes, §7 first run on the fresh cases |

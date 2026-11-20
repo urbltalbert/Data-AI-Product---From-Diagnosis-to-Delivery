@@ -102,7 +102,7 @@ What changed (all lines of `spec.md` v2): 300 training tickets and a separate 40
 
 **What went wrong, in one line:** the fix closed the safety hole by making the detector more cautious, and the price is recall. 15 in-scope tickets were handed over: **13 by the detector** (confidence 0.51–0.59, just under the 0.60 threshold, or label `other`; mostly **unusual wording** — "guest satisfaction fell. reasons?", "why the drop?", "Where are we losing points with guests?") and **2 by the new `ACCOUNT` rule**: C110 ("Rating dropped. Our invoice also seems wrong…") and C117 ("…Also I cannot find the export button"). These two are mixed tickets and their label ("in scope") is debatable; it was **not changed after the run** — a mixed ticket could reasonably go to a person.
 
-**Reading:** safe but not useful enough. Handing over is the cheap error (a person does what is done today), a wrong draft is the expensive one, so this side of the trade-off is the right one for a first release — but 46 % of in-scope tickets served would not give the time saved the memo needs (≥ 75 % at the flip point). The detector learns vocabulary: a TF-IDF model trained on ~300 invented tickets cannot cover how real account managers write. Not fixed here: these 50 cases are now development data too. Options for the next iteration: more varied labelled tickets (real ones, with consent, in shadow mode), or an LLM classifier behind the same rules (rung 2 of the ladder in 04_architecture). A new frozen set (`eval_set_v3`) would be needed to measure either.
+**Reading:** safe but not useful enough. Handing over is the cheap error (a person does what is done today), a wrong draft is the expensive one, so this side of the trade-off is the right one for a first release — but 46 % of in-scope tickets served would not give the time saved the memo needs (≥ 75 % at the flip point). The detector learns vocabulary: a TF-IDF model trained on ~300 invented tickets cannot cover how real account managers write. Not fixed here: these 50 cases are now development data too. Options for the next iteration: more varied labelled tickets (real ones, with consent, in shadow mode), or an LLM classifier behind the same rules (rung 2 of the ladder in 04_architecture). The first option was done in §9 (`eval_set_v3`).
 
 **Honest summary of the three runs on unseen cases:**
 
@@ -114,3 +114,38 @@ What changed (all lines of `spec.md` v2): 300 training tickets and a separate 40
 
 The system can be made safe or useful on this synthetic data; it is not yet both at once, and no number here comes from real tickets or two human graders.
 
+
+---
+
+## 9. Spec v4 — more varied training tickets, then ONE run on 50 new cases — `eval_set_v3`, C151–C200 (20 Nov 2026)
+**Raw output:** `evals/eval_output_v3_fresh.txt` · sheet `evals/grading_sheet_v3_fresh.csv`. The 50 cases (30 in scope, 20 hand-overs) were written into `data/cases_spec.py` **before** any change and any run; the changes below were made after the §8 result and **without copying any eval ticket** (checked: no exact copy of a C01–C200 ticket in the new training or validation tickets, none above 0.8 string similarity). Run once.
+
+**What changed (spec v4), because §8 showed recall 46 %:**
+1. `data/make_train.py`: +70 training tickets with varied wording of a rating-drop request (`POS_VARIED`) and +20 validation tickets (10 per class group). Train 220 / 150, validation 30 / 30.
+2. The threshold is chosen again on validation by the same rule (lowest threshold with precision 1.00): **0.70** (validation recall 0.87). It went up from 0.60 because the new, more varied validation tickets contain two non-rating-drop tickets that the classifier calls `rating_drop` at 0.56–0.57 (an invoice ticket, a PMS ticket). The threshold followed the validation set, not the eval-set.
+3. `prototype/themes.py`: two quotes under a theme are now two **different** sentences, and a quote that contains a masked name is used only if no other exists (defect 1–2 of spec v2).
+4. `data/make_data.py`: Spanish added to the foreign-language reviews (a bug: C184 needed it); the first 35,716 lines of the reviews file are unchanged, and `eval_set_v0/v1/v2` are byte-identical.
+5. **Policy decision, written before the run:** a *mixed* ticket (rating drop + account question) is a hand-over (C198, C199 are labelled so). It is a decision, not a measurement.
+
+| | Value |
+|---|---|
+| In-scope cases that got a draft | **22 / 30 = 73 %** — interval (Wilson) 56–86 % |
+| **Drafts on hand-over cases (must be 0)** | **1 / 20 — C188** ("Please also check why our other property in Lyon lost points.") — interval 1–24 % |
+| Drafts with a guest name or another hotel's data | 0 / 22 |
+| Decision correct (draft vs hand over) | 41 / 50 = 82 % |
+| Criterion "≥ 75 % sendable" on the proxy | **NOT verified** (73 %, interval 56–86 %) |
+
+**Verdict: the floor is broken again.** C188 asks about *another* property of the sender without writing a hotel id; the classifier says `rating_drop` at 0.71 (just above 0.70) and no rule catches "our other property / our sister hotel in <city>". It is the same family as C140 (§8, "Paris and Marseille hotels"), which a generic word rule did not catch either: C140 was handed over thanks to confidence, not to a rule. **Not fixed here, on purpose** (the case is now development data, and editing the rule after seeing it would make C188 demo data). The fix to write in the spec: *a rule for "other / second / sister / our … in <city>" property wording, plus tickets of that kind in training and validation, measured on a new frozen set.*
+
+**Reading.** Recall moved from 46 % to 73 % on two different fresh sets (28 and 30 in-scope cases; the intervals overlap, 30–64 % and 56–86 %, so do not read 27 points as a measured gain), and the floor broke again on a *different* kind of ticket than C07 and C100. Each fix closes one family of misses; the next set opens another. This is what the data says about a classifier trained on ~370 invented tickets, and about a hand-written rule list: **neither is a guarantee on real tickets**. On the development cases the same code gives 0 drafts on hand-over cases (C01–C100: 53 / 63 served; C101–C150: 17 / 28 served) — those are not results, the cases were seen.
+
+**Honest summary of the four runs on unseen cases:**
+
+| Run | Cases | In scope → draft | Drafts on hand-over cases |
+|---|---|---|---|
+| §1 first run (threshold 0.70) | C01–C50 | 0 / 33 | 0 / 17 |
+| §7 after spec v2 | C51–C100 | 24 / 30 = 80 % | **1 / 20 (C100)** |
+| §8 after spec v3 | C101–C150 | 13 / 28 = 46 % | 0 / 22 |
+| §9 after spec v4 | C151–C200 | 22 / 30 = 73 % | **1 / 20 (C188)** |
+
+The safety floor held in two of four runs, and broke on a new kind of ticket each time it broke. The conclusion for the launch is unchanged and stronger: **no release; shadow mode with a human reading every draft before anything is shown, and the floor measured on real tickets.**

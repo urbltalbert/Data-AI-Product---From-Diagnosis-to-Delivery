@@ -60,6 +60,29 @@ POS_HAND = ["why has our guest rating gone down recently", "our review score fel
             "can you check why our score is falling", "what is going on with our reviews, the average is lower",
             "we need an analysis of why our rating went down", "after the renovation our score went down, why"]
 
+# --- spec v4: more varied wording, written WITHOUT copying any eval case (C01-C200), to raise recall without lowering the threshold ---
+POS_VARIED = ["guest satisfaction has been decreasing, what is the reason", "why are our marks worse than last year", "reviews keep getting worse, what is wrong",
+              "our hotel is losing points on the platform, what is happening", "can someone explain our weaker guest feedback", "why did the average of our reviews go down",
+              "what is behind the deterioration of our score", "we see a negative trend in guest comments, can you analyse it", "the reputation of our hotel is dropping, why",
+              "which complaints are pulling our rating down", "our review average has slipped, we need to know why", "lower marks from guests since the summer, what changed",
+              "why do guests like us less than before", "something changed in what guests write, our score is down", "we lost points this quarter, please explain",
+              "what are the main reasons for our worse ratings", "our ranking score fell and the owner wants an explanation", "why is the guest score of our property declining",
+              "please investigate the fall in our review score", "we are rated lower now, what do guests complain about", "reasons for the decline in satisfaction please",
+              "our feedback score is deteriorating, please look at the comments", "guests are less pleased lately, why", "what lies behind our lower average rating",
+              "why have the ratings of our hotel worsened", "the numbers on our page are lower than before, what happened in the reviews", "can you tell us what hurts our score",
+              "why is the quality perception of our hotel worse in the reviews", "explain the downturn in our guest scores", "what drives our lower reviews this quarter"]
+VARIED_START = ["", "", "Hello, ", "Hi, ", "Dear team, ", "Please, ", "Hello team, "]
+VARIED_END = ["", "", " Thank you.", " Thanks!", " Many thanks.", " Please help.", " It is urgent."]
+
+
+def pos_varied(n):
+    out = set()
+    while len(out) < n:
+        t = random.choice(VARIED_START) + random.choice(POS_VARIED)
+        t += random.choice(["", "", "?", "."]) + random.choice(VARIED_END)
+        out.add(t.strip())
+    return sorted(out)
+
 
 def pos_templated(n):
     out = set()
@@ -99,6 +122,10 @@ VAL_POS = ["Our hotel's guest rating has been sliding for weeks and we are puzzl
            "our satisfaction numbers declined in Q3, what are the drivers", "can you tell me what changed in what guests write about us",
            "the hotel score went from 8.7 to 8.1, please analyse the comments", "worse and worse reviews recently, what are the top issues",
            "we got a lower rating than last quarter and the GM wants the causes", "analysis request: why did our score fall"]
+VAL_POS += ["why are guests more critical of us than last quarter", "what is lowering our guest score", "our reviews turned worse, can you explain why",
+            "reasons for the lower rating of our hotel please", "what changed in our feedback this quarter, the score fell",
+            "why do we get lower marks now", "the guest rating of our property is declining, what are the causes",
+            "our score is going down on your platform, please check why", "what makes guests rate us worse", "worse average on our page, please analyse"]
 VAL_NEG = ["I forgot my password and the reset email never arrives", "Please send us the contract renewal conditions", "how can I export all my reviews to a file",
            "our invoice shows two charges this month", "the mobile app shows a blank screen", "we want to reply to the 1 star review from Saturday",
            "what should we improve to climb the ranking", "how are we doing compared with the other hotels nearby", "can you add my colleague as an admin",
@@ -119,7 +146,7 @@ def write(path, rows):
 
 
 if __name__ == "__main__":
-    pos = POS_HAND + pos_templated(130)
+    pos = POS_HAND + pos_templated(130) + pos_varied(70)
     neg = neg_templated(150)
     write("data/tickets_train.csv", [(t, "rating_drop") for t in pos] + [(t, "other") for t in neg])
     write("data/tickets_val.csv", [(t, "rating_drop") for t in VAL_POS] + [(t, "other") for t in VAL_NEG])

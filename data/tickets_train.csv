@@ -149,9 +149,81 @@ explain the decline in our review score please lately,rating_drop
 what is behind our lower guest ratings,rating_drop
 why are guests rating us lower than before compared with last quarter,rating_drop
 why is our reputation score declining,rating_drop
+"Dear team, can someone explain our weaker guest feedback?",rating_drop
+"Dear team, please investigate the fall in our review score.",rating_drop
+"Dear team, reasons for the decline in satisfaction please",rating_drop
+"Dear team, something changed in what guests write, our score is down",rating_drop
+"Dear team, something changed in what guests write, our score is down? Thank you.",rating_drop
+"Dear team, the numbers on our page are lower than before, what happened in the reviews",rating_drop
+"Dear team, we see a negative trend in guest comments, can you analyse it?",rating_drop
+"Dear team, what drives our lower reviews this quarter?",rating_drop
+"Dear team, why do guests like us less than before Thank you.",rating_drop
+"Dear team, why is the guest score of our property declining Many thanks.",rating_drop
+"Dear team, why is the quality perception of our hotel worse in the reviews.",rating_drop
+"Hello team, guests are less pleased lately, why. It is urgent.",rating_drop
+"Hello team, our feedback score is deteriorating, please look at the comments Many thanks.",rating_drop
+"Hello team, our feedback score is deteriorating, please look at the comments? It is urgent.",rating_drop
+"Hello team, our review average has slipped, we need to know why? It is urgent.",rating_drop
+"Hello team, please investigate the fall in our review score? It is urgent.",rating_drop
+"Hello team, which complaints are pulling our rating down",rating_drop
+"Hello team, why have the ratings of our hotel worsened.",rating_drop
+"Hello, can you tell us what hurts our score? Thanks!",rating_drop
+"Hello, guest satisfaction has been decreasing, what is the reason. Thank you.",rating_drop
+"Hello, guests are less pleased lately, why",rating_drop
+"Hello, our hotel is losing points on the platform, what is happening Thank you.",rating_drop
+"Hello, our ranking score fell and the owner wants an explanation. Thanks!",rating_drop
+"Hello, our review average has slipped, we need to know why.",rating_drop
+"Hello, something changed in what guests write, our score is down. It is urgent.",rating_drop
+"Hello, we see a negative trend in guest comments, can you analyse it?",rating_drop
+"Hello, what are the main reasons for our worse ratings. It is urgent.",rating_drop
+"Hello, why did the average of our reviews go down Thanks!",rating_drop
+"Hello, why did the average of our reviews go down? Many thanks.",rating_drop
+"Hi, can you tell us what hurts our score.",rating_drop
+"Hi, explain the downturn in our guest scores Thanks!",rating_drop
+"Hi, guests are less pleased lately, why Many thanks.",rating_drop
+"Hi, guests are less pleased lately, why Thank you.",rating_drop
+"Hi, our hotel is losing points on the platform, what is happening Many thanks.",rating_drop
+"Hi, we are rated lower now, what do guests complain about Thanks!",rating_drop
+"Hi, we are rated lower now, what do guests complain about? It is urgent.",rating_drop
+"Hi, we see a negative trend in guest comments, can you analyse it Please help.",rating_drop
+"Please, can someone explain our weaker guest feedback Many thanks.",rating_drop
+"Please, can someone explain our weaker guest feedback? It is urgent.",rating_drop
+"Please, explain the downturn in our guest scores?",rating_drop
+"Please, our feedback score is deteriorating, please look at the comments Thanks!",rating_drop
+"Please, our hotel is losing points on the platform, what is happening? Please help.",rating_drop
+"Please, the numbers on our page are lower than before, what happened in the reviews Please help.",rating_drop
+"Please, the numbers on our page are lower than before, what happened in the reviews Thanks!",rating_drop
+"Please, we are rated lower now, what do guests complain about. Please help.",rating_drop
+"Please, we see a negative trend in guest comments, can you analyse it",rating_drop
+"Please, we see a negative trend in guest comments, can you analyse it?",rating_drop
+"Please, what is behind the deterioration of our score Many thanks.",rating_drop
+"Please, what lies behind our lower average rating. Many thanks.",rating_drop
+"Please, which complaints are pulling our rating down? Thank you.",rating_drop
+"Please, why have the ratings of our hotel worsened. Thanks!",rating_drop
+"Please, why is the quality perception of our hotel worse in the reviews. Many thanks.",rating_drop
+can someone explain our weaker guest feedback Thanks!,rating_drop
+explain the downturn in our guest scores,rating_drop
+"guest satisfaction has been decreasing, what is the reason? Many thanks.",rating_drop
+"our hotel is losing points on the platform, what is happening Thank you.",rating_drop
+our ranking score fell and the owner wants an explanation.,rating_drop
+"our review average has slipped, we need to know why Thank you.",rating_drop
+reasons for the decline in satisfaction please It is urgent.,rating_drop
+"something changed in what guests write, our score is down.",rating_drop
+"we lost points this quarter, please explain Many thanks.",rating_drop
+what drives our lower reviews this quarter? Thank you.,rating_drop
+what lies behind our lower average rating Many thanks.,rating_drop
+which complaints are pulling our rating down,rating_drop
+why did the average of our reviews go down It is urgent.,rating_drop
+why did the average of our reviews go down Many thanks.,rating_drop
+why did the average of our reviews go down Thanks!,rating_drop
+why do guests like us less than before It is urgent.,rating_drop
+why is the guest score of our property declining? Please help.,rating_drop
+why is the quality perception of our hotel worse in the reviews.,rating_drop
 "Dear support, I cannot log in to my account",other
 "Dear support, I need a copy of the data processing agreement",other
-"Dear support, Je n'arrive pas à me connecter à mon compte please",other
+"Dear support, Perché la nostra valutazione è scesa as soon as possible",other
+"Dear support, can you benchmark us against similar hotels",other
+"Dear support, can you reply to this angry review for us",other
 "Dear support, give us advice to improve our breakfast??",other
 "Dear support, how can we beat our competitors on reviews",other
 "Dear support, how can we improve guest satisfaction, thanks",other
@@ -159,69 +231,73 @@ why is our reputation score declining,rating_drop
 "Dear support, how do I change the language of the dashboard",other
 "Dear support, how do I connect my booking system",other
 "Dear support, how do I invite a colleague to see our reviews",other
-"Dear support, how do we compare with the other hotels in our city please",other
 "Dear support, how is the rating displayed on mobile as soon as possible",other
-"Dear support, the API for reviews returns an error",other
-"Dear support, the review notification emails go to the wrong address",other
+"Dear support, invoice for the review platform subscription is wrong??",other
+"Dear support, our reviews page address is wrong",other
+"Dear support, the widget on our site is not showing",other
 "Dear support, there is a bug in the calendar view as soon as possible",other
-"Dear support, this review about our hotel is fake, remove it??",other
-"Dear support, we want to cancel our contract",other
 "Dear support, we want to respond publicly to a guest comment, can you draft it",other
 "Dear support, what do you recommend to raise our rating??",other
+"Dear support, why is my login to the reviews dashboard refused",other
 "Hello, I cannot log in to my account",other
+"Hello, I did not receive the notification emails",other
+"Hello, I did not receive the notification emails please",other
 "Hello, I need a copy of the data processing agreement",other
 "Hello, Je n'arrive pas à me connecter à mon compte",other
+"Hello, Je n'arrive pas à me connecter à mon compte please",other
 "Hello, Pourquoi la note de notre hôtel a baissé",other
 "Hello, can you reply to this angry review for us, thanks",other
 "Hello, cancel the reviews subscription at the end of the month",other
+"Hello, how can I download the monthly report",other
 "Hello, how can we improve guest satisfaction",other
 "Hello, how do I change the rating display on the page??",other
-"Hello, our invoice looks wrong",other
+"Hello, how to invite a colleague",other
 "Hello, please add the rating widget to our booking page",other
+"Hello, please reset my password as soon as possible",other
 "Hello, please write an answer to the review posted yesterday",other
-"Hello, the review export is empty, thanks",other
 "Hello, the widget on our site is not showing??",other
-"Hello, we need training for new staff on the platform",other
+"Hello, we want to dispute a review from a person who never stayed??",other
 "Hello, we want to respond publicly to a guest comment, can you draft it, thanks",other
-"Hello, what do you recommend to raise our rating",other
 "Hello, why is the hotel next door rated higher than us??",other
-"Hey, I cannot log in to my account as soon as possible",other
+"Hello, write a public response to the one star review",other
 "Hey, I cannot see the rating of my second hotel in the dashboard",other
-"Hey, I want a demo of the new features please",other
-"Hey, Wie ändere ich meine Rechnungsadresse",other
+"Hey, can you add our second property",other
 "Hey, can you benchmark us against similar hotels",other
 "Hey, can you reply to this angry review for us",other
 "Hey, can you send me the API documentation, thanks",other
-"Hey, cancel the reviews subscription at the end of the month please",other
-"Hey, how can we improve guest satisfaction, thanks",other
+"Hey, cancel the reviews subscription at the end of the month",other
+"Hey, give us advice to improve our breakfast",other
+"Hey, how do I change the rating display on the page",other
 "Hey, how do I change the rating display on the page as soon as possible",other
+"Hey, how do I connect my booking system??",other
 "Hey, how do I invite a colleague to see our reviews",other
+"Hey, please reset my password",other
 "Hey, please write an answer to the review posted yesterday",other
 "Hey, the dashboard does not load",other
 "Hey, the dashboard does not load as soon as possible",other
+"Hey, the widget on our site is not showing",other
 "Hey, there is a bug in the calendar view",other
 "Hey, we want to respond publicly to a guest comment, can you draft it",other
 "Hey, what should we change in the hotel to get better scores",other
-"Hey, ¿Por qué ha bajado nuestra puntuación?",other
-"Hey, ¿Por qué ha bajado nuestra puntuación? please",other
-"Hi team, I cannot see the rating of my second hotel in the dashboard",other
 "Hi team, I did not receive the notification emails please",other
-"Hi team, I did not receive the notification emails, thanks",other
-"Hi team, I want a demo of the new features",other
-"Hi team, Je n'arrive pas à me connecter à mon compte",other
 "Hi team, Perché la nostra valutazione è scesa",other
-"Hi team, Pourquoi la note de notre hôtel a baissé",other
-"Hi team, Wie ändere ich meine Rechnungsadresse",other
-"Hi team, how can we beat our competitors on reviews",other
+"Hi team, Warum ist unsere Bewertung gesunken??",other
+"Hi team, Wie ändere ich meine Rechnungsadresse, thanks",other
+"Hi team, Wir können uns nicht einloggen",other
+"Hi team, cancel the reviews subscription at the end of the month",other
+"Hi team, cancel the reviews subscription at the end of the month please",other
+"Hi team, how can I download the monthly report",other
 "Hi team, how do I connect my booking system",other
 "Hi team, how do I connect my booking system please",other
-"Hi team, how to invite a colleague",other
+"Hi team, how is the rating displayed on mobile as soon as possible",other
 "Hi team, our review widget shows the wrong rating on our website",other
+"Hi team, please add the rating widget to our booking page",other
 "Hi team, please delete the test review we posted",other
+"Hi team, please reset my password",other
 "Hi team, please write an answer to the review posted yesterday",other
 "Hi team, the rating badge on our site does not load",other
 "Hi team, the review notification emails go to the wrong address please",other
-"Hi team, update the name shown next to our rating, thanks",other
+"Hi team, update the name shown next to our rating",other
 "Hi team, we need training for new staff on the platform",other
 "Hi team, we need training for new staff on the platform, thanks",other
 "Hi team, what should we change in the hotel to get better scores, thanks",other
@@ -229,73 +305,67 @@ why is our reputation score declining,rating_drop
 "Hi team, why is my login to the reviews dashboard refused as soon as possible",other
 "I cannot log in to my account, thanks",other
 I cannot see the rating of my second hotel in the dashboard,other
-I did not receive the notification emails??,other
-Je n'arrive pas à me connecter à mon compte,other
+I want a demo of the new features,other
 "Pourquoi la note de notre hôtel a baissé, thanks",other
+Quick question: I cannot log in to my account,other
 Quick question: I cannot log in to my account??,other
 Quick question: I need a copy of the data processing agreement please,other
 Quick question: I want a demo of the new features,other
 Quick question: Wir können uns nicht einloggen,other
 Quick question: can you reply to this angry review for us,other
+Quick question: can you upgrade us to the annual plan,other
 Quick question: how can we improve guest satisfaction,other
-Quick question: how do I add a new user,other
+"Quick question: how do I add a new user, thanks",other
 Quick question: how do I change the rating display on the page,other
+"Quick question: how is the rating displayed on mobile, thanks",other
 Quick question: invoice for the review platform subscription is wrong,other
 Quick question: our reviews page address is wrong please,other
-Quick question: please add the rating widget to our booking page please,other
+Quick question: please change the email address on our account,other
 Quick question: please delete the test review we posted,other
-Quick question: the dashboard does not load,other
-Quick question: the page is very slow today,other
+Quick question: the rating badge on our site does not load,other
 Quick question: there is a bug in the calendar view as soon as possible,other
 Quick question: we want to dispute a review from a person who never stayed,other
+Quick question: what do you recommend to raise our rating as soon as possible,other
 Quick question: what is the price of the premium plan,other
 Quick question: where can I find my invoices,other
 Quick question: why is my login to the reviews dashboard refused,other
-Quick question: write a public response to the one star review,other
+Quick question: why is the hotel next door rated higher than us,other
 Urgent: I need a copy of the data processing agreement,other
 Urgent: Je n'arrive pas à me connecter à mon compte,other
-Urgent: Perché la nostra valutazione è scesa,other
-"Urgent: Warum ist unsere Bewertung gesunken, thanks",other
-Urgent: Wie ändere ich meine Rechnungsadresse,other
-Urgent: can I hide the rating from our public page please,other
-Urgent: can you add our second property,other
-Urgent: can you reply to this angry review for us as soon as possible,other
-"Urgent: can you reply to this angry review for us, thanks",other
+Urgent: Warum ist unsere Bewertung gesunken please,other
+Urgent: can you benchmark us against similar hotels,other
+Urgent: how can we improve guest satisfaction??,other
+"Urgent: how do I add a new user, thanks",other
 Urgent: how do I invite a colleague to see our reviews please,other
 Urgent: how is the score calculated,other
 Urgent: our review widget shows the wrong rating on our website,other
 Urgent: please change the email address on our account as soon as possible,other
 Urgent: please reset my password,other
 Urgent: please update our billing address,other
+Urgent: the mobile app crashes on the reviews tab,other
 Urgent: the review export is empty,other
-Urgent: the review notification emails go to the wrong address,other
-"Urgent: this review about our hotel is fake, remove it",other
+Urgent: there is a bug in the calendar view,other
 Urgent: what is the price of the premium plan,other
 Urgent: write a public response to the one star review,other
-Warum ist unsere Bewertung gesunken,other
-can I hide the rating from our public page,other
-can you reply to this angry review for us,other
 can you send me the API documentation,other
 cancel the reviews subscription at the end of the month,other
-cancel the reviews subscription at the end of the month as soon as possible,other
-"how can we beat our competitors on reviews, thanks",other
-how can we improve guest satisfaction,other
-how do I change the language of the dashboard??,other
+how do I add a new user,other
+how do I invite a colleague to see our reviews,other
+how do we compare with the other hotels in our city,other
 "how is the score calculated, thanks",other
 how to invite a colleague,other
+how to invite a colleague please,other
 invoice for the review platform subscription is wrong,other
-our invoice looks wrong as soon as possible,other
 our reviews page address is wrong,other
+please change the email address on our account??,other
 please delete the test review we posted,other
-please write an answer to the review posted yesterday,other
 the API for reviews returns an error,other
 the page is very slow today,other
-the page is very slow today??,other
 the review export is empty,other
-the widget on our site is not showing,other
 update the name shown next to our rating,other
-we need training for new staff on the platform,other
 we want to cancel our contract,other
 what do you recommend to raise our rating??,other
+where can I find my invoices,other
 why is my login to the reviews dashboard refused,other
 why is the hotel next door rated higher than us,other
+write a public response to the one star review,other

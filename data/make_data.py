@@ -41,6 +41,7 @@ FOREIGN = {
     "de": ["Das Zimmer war schmutzig und sehr laut.", "Wunderbares Hotel, freundliches Personal.", "Das Frühstück war enttäuschend und teuer."],
     "fr": ["La chambre était sale et très bruyante.", "Hôtel magnifique, personnel aimable.", "Le petit-déjeuner était décevant et cher."],
     "it": ["La camera era sporca e molto rumorosa.", "Hotel bellissimo, personale gentile.", "La colazione era deludente e costosa."],
+    "es": ["La habitación estaba sucia y era muy ruidosa.", "Hotel precioso, personal amable.", "El desayuno fue decepcionante y caro."],
 }
 THEMES = list(NEG)
 
@@ -169,13 +170,22 @@ def main():
     # eval_set_v2 = v1 + 50 cases C101-C150, written before the C07/C100 fix, run once
     buf3 = io.StringIO()
     w3 = csv.DictWriter(buf3, fieldnames=fields, lineterminator="\n")
-    fresh2 = [csv_row(c) for c in CASES if int(c["id"][1:]) > 100]
+    fresh2 = [csv_row(c) for c in CASES if 100 < int(c["id"][1:]) <= 150]
     for r in fresh2:
         r["origin"] = "invented · planted labels, written before the fix and the run · fresh in v2"
     w3.writerows(fresh2)
     with open("evals/eval_set_v2.csv", "w", newline="", encoding="utf-8") as f:
         f.write(v0_text + buf2.getvalue() + buf3.getvalue())
-    n_cases = 50 + len(fresh) + len(fresh2)
+    # eval_set_v3 = v2 + 50 cases C151-C200, written before the detector and drafter changes, run once
+    buf4 = io.StringIO()
+    w4 = csv.DictWriter(buf4, fieldnames=fields, lineterminator="\n")
+    fresh3 = [csv_row(c) for c in CASES if int(c["id"][1:]) > 150]
+    for r in fresh3:
+        r["origin"] = "invented · planted labels, written before the changes and the run · fresh in v3"
+    w4.writerows(fresh3)
+    with open("evals/eval_set_v3.csv", "w", newline="", encoding="utf-8") as f:
+        f.write(v0_text + buf2.getvalue() + buf3.getvalue() + buf4.getvalue())
+    n_cases = 50 + len(fresh) + len(fresh2) + len(fresh3)
     print(f"{len(all_rows)} reviews, {n_cases} eval cases")
 
 

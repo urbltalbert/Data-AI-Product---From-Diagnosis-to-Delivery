@@ -28,7 +28,7 @@ A workflow. The path is fixed and can be drawn in advance: detect → check → 
 
 ## 5. Fallbacks
 - retrieval finds nothing (no review in the current quarter, or no negative theme): `NO_DRAFT`, hand over (`rules.py`, `pipeline.py`)
-- confidence below the threshold (0.60 after spec v2, chosen on `data/tickets_val.csv`): hand over with the confidence shown (`rules.eligibility`); at the first run, with 0.70, this fired on every ticket
+- confidence below the threshold (0.60 after spec v2, 0.70 after spec v4, chosen on `data/tickets_val.csv`): hand over with the confidence shown (`rules.eligibility`); at the first run, with 0.70, this fired on every ticket
 - the policy checker blocks the draft: shown with its reason, not approvable (`policy.check`)
 - the API is down: not applicable at v0 (no API call); the template drafter is the fallback by design when one is added
 
@@ -50,7 +50,9 @@ A workflow. The path is fixed and can be drawn in advance: detect → check → 
 
 **Update after spec v3 (20 Nov, 50 unseen cases):** a rule-based `ACCOUNT` hand-over (step 2) closes the C07 / C100 family: 0 / 22 drafts on hand-over cases, but only 13 / 28 = 46 % of in-scope tickets get a draft — safe, not useful enough. Source: `evals/report_v0.md` §8.
 
+**Update after spec v4 (20 Nov, 50 other unseen cases):** more varied training tickets, threshold 0.70 chosen on validation, distinct quotes. 22 / 30 = 73 % of in-scope tickets get a draft, but **1 / 20 hand-over cases got one (C188, "our other property in Lyon")**: the floor broke again on a new kind of ticket. Source: `evals/report_v0.md` §9.
+
 ## 9. What we would build next
-1. Raise the detector's recall without losing the floor (46 % of in-scope served at v3): more varied tickets or an LLM classifier behind the same rules, then a new frozen set.
+1. Raise the detector's recall without losing the floor (46 % then 73 % of in-scope served at v3 and v4; the floor broke again at v4 on C188): more varied tickets or an LLM classifier behind the same rules, then a new frozen set.
 2. Replace the lexicon by an LLM theme extractor and test it against the same cases; then have two humans grade the drafts.
 3. Add the Streamlit inbox (approve / edit / write-myself buttons and a timer), which is the MUST feature C of the brief.

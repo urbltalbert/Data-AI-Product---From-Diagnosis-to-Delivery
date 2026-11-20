@@ -31,7 +31,14 @@ def theme_counts(reviews):
         hit = neg[neg["text"].str.contains(pat, case=False, regex=True)]
         counts[theme] = {"Q2": int((hit["quarter"] == "Q2").sum()), "Q3": int((hit["quarter"] == "Q3").sum())}
         q3 = hit[hit["quarter"] == "Q3"].sort_values(["rating", "review_id"])
-        quotes[theme] = [{"review_id": r.review_id, "text": mask_names(r.text)} for r in q3.head(2).itertuples()]
+        # spec v2, defect 1-2: two DIFFERENT quotes, and a quote with a masked name only if nothing else exists
+        cand, seen = [], set()
+        for r in q3.itertuples():
+            t = mask_names(r.text)
+            if t not in seen:
+                seen.add(t); cand.append({"review_id": r.review_id, "text": t})
+        cand.sort(key=lambda q: "[name]" in q["text"])  # stable: keeps the rating / id order otherwise
+        quotes[theme] = cand[:2]
     return counts, quotes
 
 

@@ -1,0 +1,71 @@
+cases 50 · in scope 30 · hand-over expected 20
+decision correct (draft vs hand over)   41/50
+drafts on hand-over cases (must be 0)   1
+in-scope cases that got a draft         22/30
+top 3 exact order                       22/30
+top 3 overlap >= 2 of 3                 22/30
+drafts containing a guest/staff name    0   (must be 0)
+policy blocks                           0
+sendable (automatic proxy)              22/30 = 73%   (criterion 75%)
+
+misses by cause (in-scope cases):
+  2 × detection confidence 0.65 below 0.7: C156, C159
+  2 × detection confidence 0.67 below 0.7: C163, C171
+  1 × detection confidence 0.68 below 0.7: C173
+  1 × detection confidence 0.66 below 0.7: C174
+  1 × detection confidence 0.62 below 0.7: C177
+  1 × detection confidence 0.64 below 0.7: C180
+
+hand-over cases that got a draft: ['C188']
+
+per case:
+  C151 hand_over_expected=False got=draft    conf=0.76 top3=['cleanliness', 'wifi', 'breakfast'] expected=['cleanliness', 'wifi', 'breakfast'] reason=
+  C152 hand_over_expected=False got=draft    conf=0.92 top3=['noise', 'check-in', 'value'] expected=['noise', 'check-in', 'value'] reason=
+  C153 hand_over_expected=False got=draft    conf=0.70 top3=['parking', 'staff', 'room temperature'] expected=['parking', 'staff', 'room temperature'] reason=
+  C154 hand_over_expected=False got=draft    conf=0.78 top3=['breakfast', 'noise', 'wifi'] expected=['breakfast', 'noise', 'wifi'] reason=
+  C155 hand_over_expected=False got=draft    conf=0.75 top3=['check-in', 'cleanliness', 'parking'] expected=['check-in', 'cleanliness', 'parking'] reason=
+  C156 hand_over_expected=False got=escalate conf=0.65 top3=[] expected=['value', 'staff', 'noise'] reason=detection confidence 0.65 below 0.7
+  C157 hand_over_expected=False got=draft    conf=0.82 top3=['wifi', 'room temperature', 'cleanliness'] expected=['wifi', 'room temperature', 'cleanliness'] reason=
+  C158 hand_over_expected=False got=draft    conf=0.80 top3=['breakfast', 'parking', 'check-in'] expected=['breakfast', 'parking', 'check-in'] reason=
+  C159 hand_over_expected=False got=escalate conf=0.65 top3=[] expected=['noise', 'staff', 'value'] reason=detection confidence 0.65 below 0.7
+  C160 hand_over_expected=False got=draft    conf=0.80 top3=['cleanliness', 'check-in', 'wifi'] expected=['cleanliness', 'check-in', 'wifi'] reason=
+  C161 hand_over_expected=False got=draft    conf=0.83 top3=['parking', 'breakfast', 'noise'] expected=['parking', 'breakfast', 'noise'] reason=
+  C162 hand_over_expected=False got=draft    conf=0.78 top3=['room temperature', 'value', 'staff'] expected=['room temperature', 'value', 'staff'] reason=
+  C163 hand_over_expected=False got=escalate conf=0.67 top3=[] expected=['check-in', 'wifi', 'cleanliness'] reason=detection confidence 0.67 below 0.7
+  C164 hand_over_expected=False got=draft    conf=0.75 top3=['noise', 'breakfast', 'parking'] expected=['noise', 'breakfast', 'parking'] reason=
+  C165 hand_over_expected=False got=draft    conf=0.80 top3=['staff', 'cleanliness', 'value'] expected=['staff', 'cleanliness', 'value'] reason=
+  C166 hand_over_expected=False got=draft    conf=0.80 top3=['wifi', 'check-in', 'room temperature'] expected=['wifi', 'check-in', 'room temperature'] reason=
+  C167 hand_over_expected=False got=draft    conf=0.78 top3=['breakfast', 'noise', 'cleanliness'] expected=['breakfast', 'noise', 'cleanliness'] reason=
+  C168 hand_over_expected=False got=draft    conf=0.71 top3=['parking', 'value', 'check-in'] expected=['parking', 'value', 'check-in'] reason=
+  C169 hand_over_expected=False got=draft    conf=0.74 top3=['cleanliness', 'staff', 'wifi'] expected=['cleanliness', 'staff', 'wifi'] reason=
+  C170 hand_over_expected=False got=draft    conf=0.87 top3=['noise', 'room temperature', 'breakfast'] expected=['noise', 'room temperature', 'breakfast'] reason=
+  C171 hand_over_expected=False got=escalate conf=0.67 top3=[] expected=['check-in', 'parking', 'value'] reason=detection confidence 0.67 below 0.7
+  C172 hand_over_expected=False got=draft    conf=0.74 top3=['cleanliness', 'wifi', 'noise'] expected=['cleanliness', 'wifi', 'noise'] reason=
+  C173 hand_over_expected=False got=escalate conf=0.68 top3=[] expected=['staff', 'breakfast', 'check-in'] reason=detection confidence 0.68 below 0.7
+  C174 hand_over_expected=False got=escalate conf=0.66 top3=[] expected=['value', 'noise', 'parking'] reason=detection confidence 0.66 below 0.7
+  C175 hand_over_expected=False got=draft    conf=0.78 top3=['room temperature', 'cleanliness', 'wifi'] expected=['room temperature', 'cleanliness', 'wifi'] reason=
+  C176 hand_over_expected=False got=draft    conf=0.80 top3=['breakfast', 'staff', 'noise'] expected=['breakfast', 'staff', 'noise'] reason=
+  C177 hand_over_expected=False got=escalate conf=0.62 top3=[] expected=['check-in', 'value', 'cleanliness'] reason=detection confidence 0.62 below 0.7
+  C178 hand_over_expected=False got=draft    conf=0.83 top3=['parking', 'wifi', 'room temperature'] expected=['parking', 'wifi', 'room temperature'] reason=
+  C179 hand_over_expected=False got=draft    conf=0.83 top3=['noise', 'cleanliness', 'staff'] expected=['noise', 'cleanliness', 'staff'] reason=
+  C180 hand_over_expected=False got=escalate conf=0.64 top3=[] expected=['breakfast', 'check-in', 'wifi'] reason=detection confidence 0.64 below 0.7
+  C181 hand_over_expected=True  got=escalate conf=0.74 top3=[] expected=None reason=fewer than 50 reviews in the current quarter
+  C182 hand_over_expected=True  got=escalate conf=0.88 top3=[] expected=None reason=fewer than 50 reviews in the current quarter
+  C183 hand_over_expected=True  got=escalate conf=0.91 top3=[] expected=None reason=reviews mostly not in English
+  C184 hand_over_expected=True  got=escalate conf=0.88 top3=[] expected=None reason=reviews mostly not in English
+  C185 hand_over_expected=True  got=escalate conf=0.52 top3=[] expected=None reason=not a rating-drop request
+  C186 hand_over_expected=True  got=escalate conf=0.61 top3=[] expected=None reason=ticket not in English
+  C187 hand_over_expected=True  got=escalate conf=0.70 top3=[] expected=None reason=several hotels in one request
+  C188 hand_over_expected=True  got=draft    conf=0.71 top3=['check-in', 'noise'] expected=None reason=
+  C189 hand_over_expected=True  got=escalate conf=0.54 top3=[] expected=None reason=billing or contract question, not a rating-drop request
+  C190 hand_over_expected=True  got=escalate conf=0.56 top3=[] expected=None reason=detection confidence 0.56 below 0.7
+  C191 hand_over_expected=True  got=escalate conf=0.61 top3=[] expected=None reason=not a rating-drop request
+  C192 hand_over_expected=True  got=escalate conf=0.65 top3=[] expected=None reason=billing or contract question, not a rating-drop request
+  C193 hand_over_expected=True  got=escalate conf=0.62 top3=[] expected=None reason=detection confidence 0.62 below 0.7
+  C194 hand_over_expected=True  got=escalate conf=0.68 top3=[] expected=None reason=not a rating-drop request
+  C195 hand_over_expected=True  got=escalate conf=0.59 top3=[] expected=None reason=detection confidence 0.59 below 0.7
+  C196 hand_over_expected=True  got=escalate conf=0.53 top3=[] expected=None reason=account or login question, not a rating-drop request
+  C197 hand_over_expected=True  got=escalate conf=0.63 top3=[] expected=None reason=not a rating-drop request
+  C198 hand_over_expected=True  got=escalate conf=0.60 top3=[] expected=None reason=billing or contract question, not a rating-drop request
+  C199 hand_over_expected=True  got=escalate conf=0.53 top3=[] expected=None reason=account or login question, not a rating-drop request
+  C200 hand_over_expected=True  got=escalate conf=0.57 top3=[] expected=None reason=request to remove or contest a review, not a rating-drop request
