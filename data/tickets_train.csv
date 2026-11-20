@@ -1,0 +1,301 @@
+text,label
+why has our guest rating gone down recently,rating_drop
+our review score fell this quarter can you explain,rating_drop
+"rating went from 8.5 to 8.0, help us understand why",rating_drop
+"we lost half a point on our rating, what happened",rating_drop
+"our guests seem unhappy, the rating is lower, what changed",rating_drop
+what changed in our reviews between last quarter and this one,rating_drop
+we need to explain to the owner why our rating dropped,rating_drop
+"our satisfaction score is down, which topics do guests mention most",rating_drop
+"the average score of our hotel decreased, why",rating_drop
+can you find the reasons for our lower scores,rating_drop
+"we think the new carpet made our score drop, is that right",rating_drop
+"score dropped and we got two bad reviews about parking, is that it",rating_drop
+my rating is falling and I do not know why,rating_drop
+"ratings are worse since June, please investigate",rating_drop
+"we dropped from 4.4 to 4.1 on your platform, any explanation",rating_drop
+"guests are scoring us lower, what is the main complaint",rating_drop
+can you check why our score is falling,rating_drop
+"what is going on with our reviews, the average is lower",rating_drop
+we need an analysis of why our rating went down,rating_drop
+"after the renovation our score went down, why",rating_drop
+"Dear support, our guest score got worse this quarter, what do the reviews say? Also please check my invoice.",rating_drop
+"Dear support, our overall rating got worse this quarter, what do the reviews say? Also please check my invoice.",rating_drop
+"Dear support, our rating has declined since spring, we need the reasons.",rating_drop
+"Dear support, our rating is falling since spring, why?",rating_drop
+"Dear support, our review scor has declined compared with last quarter, what happened?",rating_drop
+"Dear support, our review score fell lately, what are guests unhappy about?",rating_drop
+"Dear support, our satisfaction score fell this quarter, can you explain?",rating_drop
+"Dear support, our satisfaction score got worse compared with last quarter, we need the reasons.",rating_drop
+"Dear support, our satisfaction score has declined compared with last quarter, please look into it.",rating_drop
+"Dear support, our score is lower since spring, can you tell us why?",rating_drop
+"Dear support, something is wrong with our rating, can you check the reviews this month",rating_drop
+"Dear support, the owner asks why our rating is lower, can you help",rating_drop
+"Dear support, the score of our property is lower compared with last quarter, what do the reviews say?",rating_drop
+"Dear support, ur reviews score got worse since the summer, please look into it. Also please check my invoice.",rating_drop
+"Dear support, why are guests rating us lower than before Also please check my invoice.",rating_drop
+"Hello, guests seem less happy with us, what is going on this quarter",rating_drop
+"Hello, our average rating fell since spring, what do the reviews say?",rating_drop
+"Hello, our average rating fell this quarter, can you analyse it?",rating_drop
+"Hello, our average rating has declined, can you tell us why?",rating_drop
+"Hello, our guest score decreased since spring, can you explain?",rating_drop
+"Hello, our guest score got worse this month, what are guests unhappy about?",rating_drop
+"Hello, our reviews score fell recently, what do the reviews say?",rating_drop
+"Hello, our reviews score is down, can you explain?",rating_drop
+"Hello, our reviews score slipped this quarter, please look into it.",rating_drop
+"Hello, our score slipped lately, what happened?",rating_drop
+"Hello, the owner asks why our rating is lower, can you help",rating_drop
+"Hello, the score of our property decreased this quarter, can you explain?",rating_drop
+"Hello, we are getting worse reviews than last quarter, why lately",rating_drop
+"Hello, what are guests complaining about, the score keeps going down lately",rating_drop
+"Hello, what are guests complaining about, the score keeps going down recently",rating_drop
+"Hello, what is behind our lower guest ratings compared with last quarter",rating_drop
+"Hey, explain the decline in our review score please Also please check my invoice.",rating_drop
+"Hey, our average rating has declined this quarter, we need the reasons. Also please check my invoice.",rating_drop
+"Hey, our overall rating decreased since the summer, can you explain?",rating_drop
+"Hey, our overall rating is down lately, we need the reasons.",rating_drop
+"Hey, our overall rating is falling recently, can you explain?",rating_drop
+"Hey, our overall rating is falling this quarter, what are guests unhappy about? Also please check my invoice.",rating_drop
+"Hey, our rating decreased this quarter, what do the reviews say?",rating_drop
+"Hey, our review score decreased this quarter, why?",rating_drop
+"Hey, our review score is lower since spring, what happened?",rating_drop
+"Hey, our reviews score decreased this month, can you explain?",rating_drop
+"Hey, our reviews score is down compared with last quarter, what happened?",rating_drop
+"Hey, our reviews score slipped this quarter, we need the reasons. Also please check my invoice.",rating_drop
+"Hey, our satisfaction score dropped since spring, can you explain?",rating_drop
+"Hey, our score dropped, we need the reasons.",rating_drop
+"Hey, our score got worse lately, why?",rating_drop
+"Hey, our score slipped this quarter, we need the reasons.",rating_drop
+"Hey, reviews got worse, what changed",rating_drop
+"Hey, something is wrong with our rating, can you check the reviews",rating_drop
+"Hey, something is wrong with our rating, can you check the reviews compared with last quarter",rating_drop
+"Hey, the rating of our hotel slipped since spring, what changed?",rating_drop
+"Hey, the rating of our hotel went down lately, what happened?",rating_drop
+"Hey, we are getting worse reviews than last quarter, why",rating_drop
+"Hey, why are guests rating us lower than before Also please check my invoice.",rating_drop
+"Hey, why is our reputation score declining",rating_drop
+"Hi team, guests seem less happy with us, what is going on recently",rating_drop
+"Hi team, our average rating has declined compared with last quarter, please look into it.",rating_drop
+"Hi team, our overall rating decreased since the summer, what are guests unhappy about?",rating_drop
+"Hi team, our overall rating is falling lately, can you tell us why?",rating_drop
+"Hi team, our rating is lower lately, why?",rating_drop
+"Hi team, our review score went down compared with last quarter, what happened?",rating_drop
+"Hi team, our reviews score is lower since the summer, why?",rating_drop
+"Hi team, reviews got worse, what changed",rating_drop
+"Hi team, reviews got worse, what changed since the summer",rating_drop
+"Hi team, the owner asks why our rating is lower, can you help recently",rating_drop
+"Hi team, the score of our property is down compared with last quarter, can you tell us why?",rating_drop
+"Hi team, the score of our property slipped lately, what are guests unhappy about?",rating_drop
+"Hi team, what is behind our lower guest ratings this month",rating_drop
+"Hi team, why are guests rating us lower than before",rating_drop
+"Hi team, why are guests rating us lower than before since spring",rating_drop
+"Hi team, why are guests rating us lower than before since spring Also please check my invoice.",rating_drop
+"Hi team, why is our reputation score declining",rating_drop
+"Hi team, why is our reputation score declining this quarter",rating_drop
+"Quick question: our guest score is down lately, what do the reviews say?",rating_drop
+"Quick question: our guest score is lower since spring, can you tell us why?",rating_drop
+"Quick question: our overall rating decreased this month, please look into it.",rating_drop
+"Quick question: our rating decreased, what do the reviews say?",rating_drop
+"Quick question: our rating dropped this quarter, what do the reviews say?",rating_drop
+"Quick question: our reviews score dropped compared with last quarter, can you tell us why? Also please check my invoice.",rating_drop
+"Quick question: our reviews score is falling lately, what happened?",rating_drop
+"Quick question: our satisfaction score got worse compared with last quarter, can you analyse it?",rating_drop
+"Quick question: our satisfaction score has declined this month, we need the reasons.",rating_drop
+"Quick question: our satisfaction score is falling lately, please look into it.",rating_drop
+"Quick question: our score fell since spring, what happened?",rating_drop
+"Quick question: the rating of our hotel has declined compared with last quarter, can you analyse it?",rating_drop
+"Quick question: the score of our property went down this quarter, can you tell us why?",rating_drop
+"Quick question: we are getting worse reviews than last quarter, why",rating_drop
+Quick question: what is behind our lower guest ratings this month,rating_drop
+Quick question: why are guests rating us lower than before compared with last quarter,rating_drop
+Quick question: why is our reputation score declining,rating_drop
+Quick question: why is our reputation score declining this month,rating_drop
+Urgent: explain the decline in our review scor please,rating_drop
+"Urgent: gests seem less happy with us, what is going on since the summer",rating_drop
+"Urgent: our guest score went down recently, can you tell us why?",rating_drop
+"Urgent: our overall ratng got worse since the summer, please look into it.",rating_drop
+"Urgent: our rating has declined this quarter, what do the reviews say?",rating_drop
+"Urgent: our review score got worse this month, can you analyse it?",rating_drop
+"Urgent: our reviews score is falling compared with last quarter, can you tell us why?",rating_drop
+"Urgent: our satisfaction score slipped this month, can you tell us why?",rating_drop
+"Urgent: our score is down this month, we need the reasons.",rating_drop
+"Urgent: the owner asks why our rating is lower, can you help lately",rating_drop
+"Urgent: the rating of our hotel droped this month, we need the reasons.",rating_drop
+"Urgent: the score of our property decreased this month, why? Also please check my invoice.",rating_drop
+"Urgent: the score of our property is down this quarter, can you analyse it?",rating_drop
+Urgent: what is behind ur lower guest ratings,rating_drop
+Urgent: why are guests rating us lower than before,rating_drop
+explain the decline in our review score please,rating_drop
+explain the decline in our review score please lately,rating_drop
+"our average rating decreased since spring, can you tell us why?",rating_drop
+"our average rating got worse since the summer, can you analyse it?",rating_drop
+"our average rating is down lately, can you tell us why?",rating_drop
+"our guest score is lower since the summer, please look into it.",rating_drop
+"our guest score slipped lately, what do the reviews say?",rating_drop
+"our guest score went down since the summer, can you tell us why?",rating_drop
+"our rating fell compared with last quarter, what do the reviews say?",rating_drop
+"our reviews score decreased, we need the reasons.",rating_drop
+"our reviews score dropped since spring, what do the reviews say?",rating_drop
+"our reviews score is down this month, why?",rating_drop
+"our reviews score went down, can you explain?",rating_drop
+"our satisfaction score dropped since the summer, what do the reviews say?",rating_drop
+"our satisfaction score is down lately, we need the reasons.",rating_drop
+"our score fell this quarter, what happened?",rating_drop
+"our score has declined since spring, what happened?",rating_drop
+"our score slipped compared with last quarter, what do the reviews say?",rating_drop
+"reviews got worse, what changed",rating_drop
+"the rating of our hotel is falling compared with last quarter, we need the reasons. Also please check my invoice.",rating_drop
+"the rating of our hotel is falling compared with last quarter, what changed?",rating_drop
+what is behind our lower guest ratings,rating_drop
+why are guests rating us lower than before compared with last quarter,rating_drop
+why is our reputation score declining,rating_drop
+"Dear support, I cannot log in to my account",other
+"Dear support, I need a copy of the data processing agreement",other
+"Dear support, Je n'arrive pas à me connecter à mon compte please",other
+"Dear support, give us advice to improve our breakfast??",other
+"Dear support, how can we beat our competitors on reviews",other
+"Dear support, how can we improve guest satisfaction, thanks",other
+"Dear support, how do I add a new user",other
+"Dear support, how do I change the language of the dashboard",other
+"Dear support, how do I connect my booking system",other
+"Dear support, how do I invite a colleague to see our reviews",other
+"Dear support, how do we compare with the other hotels in our city please",other
+"Dear support, how is the rating displayed on mobile as soon as possible",other
+"Dear support, the API for reviews returns an error",other
+"Dear support, the review notification emails go to the wrong address",other
+"Dear support, there is a bug in the calendar view as soon as possible",other
+"Dear support, this review about our hotel is fake, remove it??",other
+"Dear support, we want to cancel our contract",other
+"Dear support, we want to respond publicly to a guest comment, can you draft it",other
+"Dear support, what do you recommend to raise our rating??",other
+"Hello, I cannot log in to my account",other
+"Hello, I need a copy of the data processing agreement",other
+"Hello, Je n'arrive pas à me connecter à mon compte",other
+"Hello, Pourquoi la note de notre hôtel a baissé",other
+"Hello, can you reply to this angry review for us, thanks",other
+"Hello, cancel the reviews subscription at the end of the month",other
+"Hello, how can we improve guest satisfaction",other
+"Hello, how do I change the rating display on the page??",other
+"Hello, our invoice looks wrong",other
+"Hello, please add the rating widget to our booking page",other
+"Hello, please write an answer to the review posted yesterday",other
+"Hello, the review export is empty, thanks",other
+"Hello, the widget on our site is not showing??",other
+"Hello, we need training for new staff on the platform",other
+"Hello, we want to respond publicly to a guest comment, can you draft it, thanks",other
+"Hello, what do you recommend to raise our rating",other
+"Hello, why is the hotel next door rated higher than us??",other
+"Hey, I cannot log in to my account as soon as possible",other
+"Hey, I cannot see the rating of my second hotel in the dashboard",other
+"Hey, I want a demo of the new features please",other
+"Hey, Wie ändere ich meine Rechnungsadresse",other
+"Hey, can you benchmark us against similar hotels",other
+"Hey, can you reply to this angry review for us",other
+"Hey, can you send me the API documentation, thanks",other
+"Hey, cancel the reviews subscription at the end of the month please",other
+"Hey, how can we improve guest satisfaction, thanks",other
+"Hey, how do I change the rating display on the page as soon as possible",other
+"Hey, how do I invite a colleague to see our reviews",other
+"Hey, please write an answer to the review posted yesterday",other
+"Hey, the dashboard does not load",other
+"Hey, the dashboard does not load as soon as possible",other
+"Hey, there is a bug in the calendar view",other
+"Hey, we want to respond publicly to a guest comment, can you draft it",other
+"Hey, what should we change in the hotel to get better scores",other
+"Hey, ¿Por qué ha bajado nuestra puntuación?",other
+"Hey, ¿Por qué ha bajado nuestra puntuación? please",other
+"Hi team, I cannot see the rating of my second hotel in the dashboard",other
+"Hi team, I did not receive the notification emails please",other
+"Hi team, I did not receive the notification emails, thanks",other
+"Hi team, I want a demo of the new features",other
+"Hi team, Je n'arrive pas à me connecter à mon compte",other
+"Hi team, Perché la nostra valutazione è scesa",other
+"Hi team, Pourquoi la note de notre hôtel a baissé",other
+"Hi team, Wie ändere ich meine Rechnungsadresse",other
+"Hi team, how can we beat our competitors on reviews",other
+"Hi team, how do I connect my booking system",other
+"Hi team, how do I connect my booking system please",other
+"Hi team, how to invite a colleague",other
+"Hi team, our review widget shows the wrong rating on our website",other
+"Hi team, please delete the test review we posted",other
+"Hi team, please write an answer to the review posted yesterday",other
+"Hi team, the rating badge on our site does not load",other
+"Hi team, the review notification emails go to the wrong address please",other
+"Hi team, update the name shown next to our rating, thanks",other
+"Hi team, we need training for new staff on the platform",other
+"Hi team, we need training for new staff on the platform, thanks",other
+"Hi team, what should we change in the hotel to get better scores, thanks",other
+"Hi team, where can I find my invoices please",other
+"Hi team, why is my login to the reviews dashboard refused as soon as possible",other
+"I cannot log in to my account, thanks",other
+I cannot see the rating of my second hotel in the dashboard,other
+I did not receive the notification emails??,other
+Je n'arrive pas à me connecter à mon compte,other
+"Pourquoi la note de notre hôtel a baissé, thanks",other
+Quick question: I cannot log in to my account??,other
+Quick question: I need a copy of the data processing agreement please,other
+Quick question: I want a demo of the new features,other
+Quick question: Wir können uns nicht einloggen,other
+Quick question: can you reply to this angry review for us,other
+Quick question: how can we improve guest satisfaction,other
+Quick question: how do I add a new user,other
+Quick question: how do I change the rating display on the page,other
+Quick question: invoice for the review platform subscription is wrong,other
+Quick question: our reviews page address is wrong please,other
+Quick question: please add the rating widget to our booking page please,other
+Quick question: please delete the test review we posted,other
+Quick question: the dashboard does not load,other
+Quick question: the page is very slow today,other
+Quick question: there is a bug in the calendar view as soon as possible,other
+Quick question: we want to dispute a review from a person who never stayed,other
+Quick question: what is the price of the premium plan,other
+Quick question: where can I find my invoices,other
+Quick question: why is my login to the reviews dashboard refused,other
+Quick question: write a public response to the one star review,other
+Urgent: I need a copy of the data processing agreement,other
+Urgent: Je n'arrive pas à me connecter à mon compte,other
+Urgent: Perché la nostra valutazione è scesa,other
+"Urgent: Warum ist unsere Bewertung gesunken, thanks",other
+Urgent: Wie ändere ich meine Rechnungsadresse,other
+Urgent: can I hide the rating from our public page please,other
+Urgent: can you add our second property,other
+Urgent: can you reply to this angry review for us as soon as possible,other
+"Urgent: can you reply to this angry review for us, thanks",other
+Urgent: how do I invite a colleague to see our reviews please,other
+Urgent: how is the score calculated,other
+Urgent: our review widget shows the wrong rating on our website,other
+Urgent: please change the email address on our account as soon as possible,other
+Urgent: please reset my password,other
+Urgent: please update our billing address,other
+Urgent: the review export is empty,other
+Urgent: the review notification emails go to the wrong address,other
+"Urgent: this review about our hotel is fake, remove it",other
+Urgent: what is the price of the premium plan,other
+Urgent: write a public response to the one star review,other
+Warum ist unsere Bewertung gesunken,other
+can I hide the rating from our public page,other
+can you reply to this angry review for us,other
+can you send me the API documentation,other
+cancel the reviews subscription at the end of the month,other
+cancel the reviews subscription at the end of the month as soon as possible,other
+"how can we beat our competitors on reviews, thanks",other
+how can we improve guest satisfaction,other
+how do I change the language of the dashboard??,other
+"how is the score calculated, thanks",other
+how to invite a colleague,other
+invoice for the review platform subscription is wrong,other
+our invoice looks wrong as soon as possible,other
+our reviews page address is wrong,other
+please delete the test review we posted,other
+please write an answer to the review posted yesterday,other
+the API for reviews returns an error,other
+the page is very slow today,other
+the page is very slow today??,other
+the review export is empty,other
+the widget on our site is not showing,other
+update the name shown next to our rating,other
+we need training for new staff on the platform,other
+we want to cancel our contract,other
+what do you recommend to raise our rating??,other
+why is my login to the reviews dashboard refused,other
+why is the hotel next door rated higher than us,other
