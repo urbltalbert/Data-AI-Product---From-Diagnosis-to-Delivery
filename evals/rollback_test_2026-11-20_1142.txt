@@ -1,0 +1,13 @@
+Rollback drill - prototype v0 - 2026-11-20 11:42:37 CET
+Host: macbook-pro-de-enzo.home (Darwin) - prototype only, no real user, no real hotel data
+Result: ALL PASS (7/7)
+
+[PASS] 1 on: a draft is produced - decision=draft top3=['cleanliness', 'noise', 'breakfast']
+[PASS] 2 off: no draft, ticket goes to the manual queue - Review Insights is switched off - answer manually
+[PASS] 3 off: takes effect on the very next ticket - 3.7 ms from writing the flag to the first escalated answer, same process, no restart
+[PASS] 4 suggest_only: themes shown, no email draft - top3=['cleanliness', 'noise', 'breakfast']
+[PASS] 5 back to on: drafts resume
+[PASS] 6 unknown value in the flag file: fails SAFE (off) - Review Insights is switched off - answer manually
+[PASS] 7 outage in a step: humans-only fallback, no crash - system error (RuntimeError) - answer manually
+
+Finished 11:42:37. Switch file restored to its previous state.
