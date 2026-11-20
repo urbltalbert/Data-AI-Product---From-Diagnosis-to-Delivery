@@ -43,7 +43,28 @@
 | 5. Draft the email | L2 | unclear reply = follow-up ticket |
 | 6. Review and send | person only | wrong data or a guest name reaches the hotel (GDPR) |
 
-## Session 4 — human-in-the-loop points and the override switch (to come)
-## Session 5 — counter-metrics and the segments we report (to come)
-## Session 6 — protected segments and the harm threshold that stops an experiment (to come)
-## Session 7 — accountable owner, rollback authority, incident path (to come)
+## Session 4 — human-in-the-loop points and the override switch
+| Checkpoint ⊘ | Kind | Where | Owner |
+|---|---|---|---|
+| Detection of a rating-drop request | sampling (L3) | step 1 | Claire samples; Head of Customer Success reads the rate |
+| Hand-over (< 50 reviews, non-English, other hotel_id, not a rating drop, confidence < 0.70) | abstention | steps 1–2 | Head of Customer Success sets the thresholds |
+| Review of the draft | approval (L2) | after step 4 | the account manager (Claire) |
+| Send | person only | — | the account manager; the system has no send tool |
+
+- **⏻ Override switch:** the Head of Customer Success turns the whole system off (day); the on-call engineer at night. Scope: everyone; one account manager can also "write it myself" on any ticket. **Tested on 20 Nov 2026, 7 of 7 checks, by one team member — see Session 7.**
+- **Eval data:** invented only, never real customer data. Stored in the repo (`evals/`, `data/`), visible to the team members and the course staff. C21–C50 were drafted with an AI assistant and need review by both members. Production logs (reviews used, prompt, model version): 12 months, access Claire, Head of CS, DPO.
+- **Honest status:** first run, no draft passed the 0.70 detection threshold (0 / 33): safe but useless. After the spec v2 fixes (threshold 0.60 chosen on validation tickets), 30 / 33 drafts on a development run, but one draft on a hand-over ticket (C07, an invoice request): the release gate "zero drafts on hand-over tickets" is not met. The human checkpoints are designed, not yet exercised by two graders.
+## Session 5 — counter-metrics and the segments we report
+- **Counter-metrics:** hotel complaints about an inaccurate diagnosis (> 2 a month); time Claire spends per request including verification. Details: `05_metrics.md` §3.
+- **Segments reported:** language of the reviews, reviews per quarter (≥ 50 / < 50), hotel type, stars, account manager. Today no segment has n ≥ 30, so the fairness metric (equal error rates, gap ≤ 15 points) is declared but not testable.
+- **Harm threshold and owner:** more than 2 hotel complaints about an inaccurate diagnosis in a calendar month, or one draft showing another hotel's data or a guest name, in any segment → copilot disabled globally, manual workflow. Owner: Head of Customer Success; DPO for the data case. *To check: the Head of CS accepts the gap and band numbers.*
+- **Status:** the floor "zero drafts on hand-over tickets" was broken twice (C07, C100), then held once on 22 unseen hand-over cases after the fix (report §8); the price was recall (46 % of in-scope served); the two-grader number and the judge agreement are not measured yet (`evals/README.md`).
+## Session 6 — protected segments and the harm threshold that stops an experiment
+- **Protected segments (pre-registered, `06_07_experiments_operations.md` §2):** language of the reviews, reviews per quarter (≥ 50 / < 50), hotel type, stars, account manager. Read only to detect a segment where the effect has the opposite sign; none has enough units to be tested.
+- **Harm threshold that stops an experiment at once:** a draft that shows another hotel's data or a guest name and reaches a hotel, or more than 2 hotel complaints about an inaccurate diagnosis in a calendar month. Never stop on a good number.
+- **Experiments on real users.** Any experiment on real account managers and hotels is signed by the Head of Customer Success and read by the DPO before it starts; the decision rule and the harm threshold are written before the first unit (06_07 §2). **No experiment has run.** Gates before the first real unit: the floor "zero drafts on hand-over tickets" is met on a fresh frozen set, two humans have graded the golden set, the DPO has read the file.
+## Session 7 — accountable owner, rollback authority, incident path
+- **The switch.** The Head of Customer Success can move the system to suggest-only or off, by day; the on-call engineer by night (suggest-only alone, off after waking the Head of CS). Last tested 20 November 2026 on the prototype, 7 of 7 checks (`evals/rollback_test_2026-11-20_1142.txt`), by the author of the script only; next test: a second team member, before 23 November. Not tested: the human call chain, the night path, the real ticketing tool.
+- **The trace.** One trace per ticket, one span per step, kept 12 months in Langfuse (EU) or Phoenix; the DPO answers a customer or a regulator from it. Designed, not built.
+- **Accountability.** The company answers for what the system says (Moffatt v. Air Canada, 2024 BCCRT 149): a draft that reaches a hotel is LobbyIQ's statement, whatever the model did. Hence the account manager approves every draft and the system has no send tool.
+- **Incident path.** Caught → counted weekly; sent wrong → corrected the same day and counted against the threshold of 2; harmful → rollback now, incident report, DPO informed; outage → automatic fallback to humans only.
