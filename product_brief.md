@@ -13,7 +13,7 @@ When a hotel asks why its rating dropped, the agent prepares a one-page draft fo
 ## 3. The process — as built
 | # | Step | What runs | Trust | Way back to a person |
 |---|---|---|---|---|
-| 1 | detect the request | TF-IDF + logistic regression, threshold 0.60 chosen on validation tickets | L3 | confidence below 0.60 → normal queue, reason shown |
+| 1 | detect the request | TF-IDF + logistic regression, threshold 0.70 chosen on validation tickets | L3 | confidence below 0.70 → normal queue, reason shown |
 | 2 | eligibility | rules: ≥ 50 reviews in the quarter, English, one hotel, not a WON'T intent, not an account matter | L4 | any failed rule → hand-over with its specific reason |
 | 3 | extract | rules: two quarters, one `hotel_id` per call, names masked | L4 | unknown hotel → hand-over |
 | 4 | themes | lexicon-based top 3 negative themes, counts, delta, 2 quotes each | L2 | — |
@@ -28,12 +28,12 @@ A three-position switch (`on` · `suggest_only` · `off`; an unknown value count
 **WON'T (5):** D auto-send · E hotel portal · F operational recommendations · G public replies to reviews · H benchmark against peers. Non-English reviews and tickets are handed over. **Built in the prototype:** A and B in the drafter, the hand-over and policy rules. **Not built:** the C ticket panel (the demo is `03_prototype.html`).
 
 ## 5. Data
-Production: hotel guest reviews. Eval data is **invented** — 150 hotels, 26,664 reviews, 150 eval cases (`data/make_data.py`, `data/cases_spec.py`), with three planted issues per hotel so the right top 3 is known in advance. No real ticket or guest is used. Guest names are masked; reads are isolated by `hotel_id`; two quarters only. GDPR: the hotel is controller, LobbyIQ processor (legitimate interest, Art. 6(1)(f)) — see `governance.md`. **Caveat:** the labels come from the generator, so real reviews will be harder.
+Production: hotel guest reviews. Eval data is **invented** — 200 hotels, 35,715 reviews, 200 eval cases (`data/make_data.py`, `data/cases_spec.py`), with three planted issues per hotel so the right top 3 is known in advance. No real ticket or guest is used. Guest names are masked; reads are isolated by `hotel_id`; two quarters only. GDPR: the hotel is controller, LobbyIQ processor (legitimate interest, Art. 6(1)(f)) — see `governance.md`. **Caveat:** the labels come from the generator, so real reviews will be harder.
 
 ## 6. Model — one rung per part, as built
 | Part | Rung | Note |
 |---|---|---|
-| Request detection | 2 — classical ML | learns vocabulary, not intent; hands over unusual wording (recall 46 % of in-scope on unseen cases **[R §8]**) |
+| Request detection | 2 — classical ML | learns vocabulary, not intent; hands over unusual wording (46 % then 73 % of in-scope served on two unseen sets **[R §8–9]**) |
 | Eligibility and account-matter rules | 1 — rules | the safety net that does not depend on the classifier (spec v3) |
 | Quarter metrics, extraction | 1 — rules | exact aggregation |
 | Theme extraction | **1 — lexicon** (v2 planned an LLM) | cheaper to test; an LLM extractor is the next step |
@@ -44,9 +44,9 @@ Production: hotel guest reviews. Eval data is **invented** — 150 hotels, 26,66
 > On a frozen eval-set of unseen cases, **at least 75 % of in-scope requests** get a draft that two independent graders mark as sendable after minor edits only — **with zero drafts on hand-over tickets, zero guest names, zero other-hotel data.**
 
 **Status on 20 Nov 2026: not verified.**
-- Automatic proxy on unseen cases: **13 / 28 = 46 %** in scope served (30–64 %) **[R §8]**, versus 24 / 30 = 80 % before the safety fix **[R §7]**.
-- Drafts on hand-over tickets: broken twice, **0 / 22** on the last run **[R §6–8]**.
-- Names and other-hotel data: 0 / 13 **[R §8]**.
+- Automatic proxy on unseen cases: **22 / 30 = 73 %** in scope served (56–86 %) **[R §9]**; 13 / 28 = 46 % and 24 / 30 = 80 % on the two sets before **[R §7–8]**.
+- Drafts on hand-over tickets: broken in three of four unseen runs (C07, C100, C188), **1 / 20** on the last **[R §6–9]**.
+- Names and other-hotel data: 0 / 22 **[R §9]**.
 - Two-grader share: **not measured** — the grading guide, the golden set of 30 and the judge prompt exist (`evals/`), nobody has graded yet.
 
 75 % is the handling-time flip point of the sizing **[S]**; the live minutes are measured in the A/B **[06]**.

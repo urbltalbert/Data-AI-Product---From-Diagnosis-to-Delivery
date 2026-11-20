@@ -9,7 +9,7 @@ Account managers spend ~45 min (a guess, not yet timed) on each of ~1,200 monthl
 - detect    : ticket text                         -> rating_drop | other, confidence                   (L3 — Claire samples)
 - eligible  : hotel_id, ticket, review counts     -> ok | hand_over(reason)                            (L4 — rules)
               rules, in order: other hotel id · ticket language · WON'T intent · account matter ·
-              label · confidence >= 0.60 · unknown hotel · reviews mostly not English · < 50 reviews in Q3
+              label · confidence >= 0.70 · unknown hotel · reviews mostly not English · < 50 reviews in Q3
 - extract   : hotel_id + two quarters             -> reviews[] (English, names masked, one hotel_id per call)  (L4 — rules)
 - themes    : reviews[]                           -> top 3 negative themes, counts, delta, 2 quotes each        (L2)
 - draft     : themes + template                   -> draft with both quarters and review ids                    (L2 — Claire approves)
@@ -35,7 +35,7 @@ draft  : {text, quarters{current, previous}, themes[{name, count_current, count_
 - guest or staff name in a review -> masked before drafting
 
 ## fallbacks
-- detection confidence below 0.60 (chosen on validation tickets) -> hand over to Claire, with the reason shown
+- detection confidence below 0.70 (chosen on validation tickets, spec v4) -> hand over to Claire, with the reason shown
 - policy block (name, other hotel_id, promise) -> show the reason, no draft
 - switch `off` or unknown -> manual workflow; `suggest_only` -> draft shown, no action
 - Claire can always click "write it myself"
@@ -43,13 +43,13 @@ draft  : {text, quarters{current, previous}, themes[{name, count_current, count_
 ## done_criteria
 - on a frozen set of unseen cases, >= 75 % of in-scope requests get a draft that two graders mark as sendable after minor edits
 - **zero drafts on hand-over tickets, zero guest names, zero other-hotel data** (any miss blocks the release)
-- **Status 20 Nov 2026: not met.** Proxy on unseen cases 13 / 28 = 46 % served (report §8); floor held 0 / 22 after being broken twice; two-grader share not measured.
+- **Status 20 Nov 2026: not met.** Proxy on unseen cases 22 / 30 = 73 % served (report §9; 46 % on the set before); floor broken in 3 of 4 unseen runs (C07, C100, C188) and held 0 / 22 once; two-grader share not measured.
 
 ## out_of_scope
 D. auto-send to the hotel · E. self-serve portal for hotels · F. operational recommendations · G. public replies to reviews · H. benchmark against local peers · non-English reviews.
 
 ## eval_set
-`evals/eval_set_v2.csv` — 150 cases (C01-C50 development, C51-C100 run once before the fix, C101-C150 run once after it). All are now development data; `eval_set_v3` is to be written before the next measurement. Golden set: `evals/golden_30.csv`. Reports: `evals/report_v0.md` §1-§8.
+`evals/eval_set_v3.csv` — 200 cases (C01-C50 development; C51-C100, C101-C150 and C151-C200 each run once, unseen, in report §7, §8 and §9). All are now development data; `eval_set_v4` is to be written before the next measurement. Golden set: `evals/golden_30.csv`. Reports: `evals/report_v0.md` §1-§9.
 
 ## rollback
 Trigger: any draft that shows another hotel's data or a guest name, or more than 2 hotel complaints about an inaccurate diagnosis in a calendar month. Action: `off`. Owner: Head of Customer Success; on-call engineer at night. Drill: `prototype/test_switch.py`, 7 / 7 on 20 Nov 2026 (one person; to be re-run by a second).
@@ -71,3 +71,6 @@ Trigger: any draft that shows another hotel's data or a guest name, or more than
 - **[OPEN]** C21–C50 labels must be reviewed by both team members.
 - **[NEW] switch (S7):** `prototype/switch.py` — three positions (on · suggest-only · off), read on every call, unknown value fails safe to off; `serve_ticket` falls back to humans-only on any step error. Tested by `prototype/test_switch.py`, 7 / 7 on 20 Nov 2026.
 - **[NEW] detect / recall (report §8):** the TF-IDF detector hands over unusual wording ("why the drop?", "where are we losing points") at confidence 0.51–0.59. Next step: more varied labelled tickets (real ones, with consent, in shadow mode) or an LLM classifier behind the same rules; measure on a new frozen set (`eval_set_v3`). Mixed tickets (rating drop + account question) are handed over today; the policy for them is a decision for the Head of CS.
+- **[DONE 20 Nov, spec v4, report §9]** 70 more varied rating-drop training tickets and 20 validation tickets (none copied from an eval case), threshold re-chosen on validation: **0.70**; two quotes under a theme are two different sentences, masked names only as a last resort. Measured once on C151-C200: **22 / 30 = 73 % served, 1 / 20 drafts on a hand-over case (C188)**.
+- **[NEW] eligible / other property (report §9, C188):** rule-based hand-over for wording that points to another property of the sender without an id ("our other property in <city>", "our sister hotel", "our second hotel"); tickets of that kind in training and validation; measure on `eval_set_v4`. **Not done yet.**
+- **[DECISION]** a mixed ticket (rating drop + account question) is a hand-over (C198, C199).

@@ -32,7 +32,7 @@ One numbered file per session. Every member authors commits in at least four of 
 | `06_07_experiments_operations.md` | S6 + S7 | done — no experiment run; rollback drill 20 Nov |
 | `08_launch_memo.md` | S8 | draft v1.0 candidate (decision: shadow mode only) |
 | `spec.md`, `product_brief.md` | skeleton in S3, final at the end | spec v3 and brief v3 written 20 Nov; to be reviewed by both members before the tag |
-| `/prototype`, `/evals`, `/data` | from S4 | v0 built; first run 0 / 33, after spec v2 24 / 30 on fresh cases but 1 draft on a hand-over case; after spec v3 0 / 22 such drafts but 13 / 28 = 46 % in-scope served (`evals/report_v0.md` §8) |
+| `/prototype`, `/evals`, `/data` | from S4 | v0 built; first run 0 / 33, after spec v2 24 / 30 on fresh cases but 1 draft on a hand-over case; after spec v3 0 / 22 such drafts but 13 / 28 = 46 % served; after spec v4 22 / 30 = 73 % served but 1 / 20 such drafts (C188) (`evals/report_v0.md` §8–9) |
 
 ## Rules
 - Commit with your own Git account: the individual question at the oral is about a commit you signed.
